@@ -29,6 +29,7 @@
         ];
       };
 
+      # TODO: make 'flake update' command output updated packages
       nixosConfigurations = {
         nix-desktop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };

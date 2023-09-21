@@ -12,6 +12,8 @@
     xkbVariant = "";
   };
 
+  hardware.bluetooth.enable = true;
+
   boot.initrd.kernelModules = [ "amdgpu" ];
   hardware.opengl = {
     # Mesa

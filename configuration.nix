@@ -25,6 +25,10 @@
       lsd
       bat
       ripgrep
+      helix
+      element-desktop
+      jamesdsp
+      # rustrover try this new jetbrains rust IDE when on nixpkgs
     ];
   };
 
