@@ -29,8 +29,39 @@
       element-desktop
       jamesdsp
       # rustrover try this new jetbrains rust IDE when on nixpkgs
+
+      # Gaming stuff
+      gamescope
+      mangohud
+      protontricks
+      gamemode
     ];
   };
+
+  nixpkgs.config = {
+    allowUnfree = true; # Allow proprietary software.
+
+    # Needed for gamescope to work with steam
+    # TIP: try using gamescope for games that don't launch on wayland
+    packageOverrides = pkgs: {
+      steam = pkgs.steam.override {
+        extraPkgs = pkgs: with pkgs; [
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXScrnSaver
+          libpng
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib
+          libkrb5
+          keyutils
+        ];
+      };
+    };
+  };
+
+  programs.steam.enable = true;
 
   # Bootloader.
   boot.loader = {
@@ -70,7 +101,7 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
-  services.flatpak.enable = true;
+  # services.flatpak.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -144,5 +175,4 @@
       keep-derivations      = true
     '';
   };
-  nixpkgs.config.allowUnfree = true; # Allow proprietary software.
 }
