@@ -22,7 +22,6 @@
         switch = "echo Running: sudo nixos-rebuild switch --flake ~/NixOS-Config# && sudo nixos-rebuild switch --flake ~/NixOS-Config#";
 
         ls = "lsd";
-        cat = "bat";
       };
     };
 
@@ -46,6 +45,7 @@
       extensions = with pkgs.vscode-extensions; [
         # CodeLLDB works when added here, but not when added from VscodeMarketplace?
         vadimcn.vscode-lldb
+        rust-lang.rust-analyzer
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-direnv";
@@ -63,57 +63,38 @@
           name = "vscode-clangd";
           publisher = "llvm-vs-code-extensions";
           version = "0.1.24";
-          sha256 = "sha256-yOpsYjjwHRXxbiHDPgrtswUtgbQAo+3RgN2s6UYe9mg=";
-        }
-        {
-          name = "cmake";
-          publisher = "twxs";
-          version = "0.0.17";
-          sha256 = "sha256-CFiva1AO/oHpszbpd7lLtDzbv1Yi55yQOQPP/kCTH4Y=";
+          sha256 = "0s7n3r3fkb6xh38yv8q0nj0js1dkxl53xhr1dvqia7gh71i6rsn8";
         }
         {
           name = "cmake-tools";
           publisher = "ms-vscode";
-          version = "1.15.31";
-          sha256 = "sha256-GwNSpgQe8/rdYAsGvUUFS7LLRR1RkjEdu8f7ArhCimU=";
+          version = "1.16.9";
+          sha256 = "1aynjfy2m4fhslfm7fhq4yxq8rzrsqhcajy1ngvvb6qa0lidpzxr";
         }
         {
-          name = "rust-analyzer";
-          publisher = "rust-lang";
-          version = "0.4.1652";
-          sha256 = "0ilq6pqb5ajfnwb0a6wpcixxkrw3dcvk5na5zim0gp86q0c8xw9i";
+          name = "vsliveshare";
+          publisher = "ms-vsliveshare";
+          version = "1.0.5883";
+          sha256 = "1zgjz25s1x1n93va7xbadmfjkqr2rahsrhpiw22xsshvswh4pp04";
         }
         {
           name = "clang-tidy";
           publisher = "notskm";
           version = "0.5.1";
-          sha256 = "sha256-neAvG8bk8yzpbuSzvVVi8Z3lCr29FBncXx3Sv/KChHw=";
+          sha256 = "0z44hbrbzlhxbzf1j55xpl5fb7gic9avvcz4dvljrwz4qqdjzq4x";
         }
-        # {
-        #   name = "sonarlint-vscode";
-        #   publisher = "SonarSource";
-        #   version = "3.21.0";
-        #   sha256 = "sha256-m1X0uPbr8yaQCQ+gsc4I3JmJktjowcM2Ae02dM4lIDs=";
-        # }
-        # {
-        #   name = "vscode-lldb";
-        #   publisher = "vadimcn";
-        #   version = "1.9.2";
-        #   sha256 = "sha256-TxHILZ0862gnWPrh9ut3dqCcGHrWMgUfYCkOjygMcVk=";
-        # }
         {
-          name = "vsliveshare";
-          publisher = "MS-vsliveshare";
-          version = "1.0.5883";
-          sha256 = "sha256-BNxLINcbat2F4PHCrKHKIuMpXW1q9aP2SDb0oIv48v0=";
+          name = "cmake";
+          publisher = "twxs";
+          version = "0.0.17";
+          sha256 = "11hzjd0gxkq37689rrr2aszxng5l9fwpgs9nnglq3zhfa1msyn08";
         }
         {
           name = "gitlens";
           publisher = "eamodio";
-          version = "14.3.0";
-          sha256 = "sha256-ZZPW+A0wekn2XBaaaYfoBDMQAY7+lpFCqkOCDZi16kA=";
+          version = "14.1.1";
+          sha256 = "sha256-eSN48IudpHYzT4u+S4b2I2pyEPyOwBCSL49awT/mzEE=";
         }
-
       ];
 
       # TODO: make settings.json mutable and store it separately?
