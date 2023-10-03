@@ -31,6 +31,36 @@
       nix-direnv.enable = true;
     };
 
+    helix = {
+      enable = true;
+      settings = {
+        theme = "tokyonight";
+        editor = {
+          mouse = false;
+          line-number = "relative";
+          bufferline = "multiple"; # show file tabs at the top if multiple files opened
+          file-picker.hidden = false; # Do not ignore hidden files
+          cursor-shape.insert = "bar";
+          lsp = {
+            display-messages = true;
+            display-inlay-hints = true;
+          };
+          statusline = {
+            left = [ "mode" "spinner" "file-modification-indicator"];
+            center = [ "file-name" ];
+            right = [ "diagnostics" "selections" "position" "file-encoding" "file-line-ending" "file-type" "version-control" ];
+            separator = "│";
+            mode.normal = "NORMAL";
+            mode.insert = "INSERT";
+            mode.select = "SELECT";
+          };
+        };
+        keys.normal = {
+            esc = [ "collapse_selection" "keep_primary_selection" ]; # clear selection and multiple cursors on ESC
+          };
+      };
+    };
+
     # Need to launch codium from nix develop shell to get environment working correctly...
     vscode = {
       enable = true;

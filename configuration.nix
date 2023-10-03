@@ -2,14 +2,12 @@
 {
   environment = {
     variables = {
-      # TERMINAL = "alacritty";
-      EDITOR = "nvim";
-      VISUAL = "nvim";
+      EDITOR = "hx";
+      VISUAL = "hx";
     };
     systemPackages = with pkgs; [
       git
       bitwarden
-      neovim
       spotify
       discord
       authy
@@ -25,7 +23,6 @@
       lsd
       bat
       ripgrep
-      helix
       element-desktop
       jamesdsp
       # rustrover try this new jetbrains rust IDE when on nixpkgs
