@@ -46,7 +46,7 @@
             display-inlay-hints = true;
           };
           statusline = {
-            left = [ "mode" "spinner" "file-modification-indicator"];
+            left = [ "mode" "spinner" "file-modification-indicator" ];
             center = [ "file-name" ];
             right = [ "diagnostics" "selections" "position" "file-encoding" "file-line-ending" "file-type" "version-control" ];
             separator = "│";
@@ -56,8 +56,8 @@
           };
         };
         keys.normal = {
-            esc = [ "collapse_selection" "keep_primary_selection" ]; # clear selection and multiple cursors on ESC
-          };
+          esc = [ "collapse_selection" "keep_primary_selection" ]; # clear selection and multiple cursors on ESC
+        };
       };
     };
 

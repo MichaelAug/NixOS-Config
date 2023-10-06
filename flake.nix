@@ -25,9 +25,9 @@
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = with pkgs; [
           nil # nix language server
-          nixpkgs-fmt # nix code formatter
         ];
       };
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
       # TODO: make 'flake update' command output updated packages
       nixosConfigurations = {
@@ -45,9 +45,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.michael = {
-                imports = [ 
+                imports = [
                   ./home.nix
-                  ./desktop_environments/kde/home.nix ];
+                  ./desktop_environments/kde/home.nix
+                ];
               };
             }
           ];
@@ -67,9 +68,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.michael = {
-                imports = [ 
+                imports = [
                   ./home.nix
-                  ./desktop_environments/gnome/home.nix ];
+                  ./desktop_environments/gnome/home.nix
+                ];
               };
             }
           ];

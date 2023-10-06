@@ -32,6 +32,9 @@
       mangohud
       protontricks
       gamemode
+
+      zellij
+      lf
     ];
   };
 

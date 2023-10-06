@@ -3,8 +3,8 @@
 {
   #TODO: add gnome config files here
 
-  home.packages = with pkgs; [                               
-    
+  home.packages = with pkgs; [
+
     gamemode
     gnomeExtensions.gamemode
     gnomeExtensions.appindicator

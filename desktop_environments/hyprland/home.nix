@@ -3,7 +3,7 @@
 {
   # TODO: finish this
 
-  home.packages = with pkgs; [                               
+  home.packages = with pkgs; [
     eww-wayland # Widgets and bar
     waybar
     dunst # Notification daemon
