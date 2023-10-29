@@ -25,6 +25,7 @@
       ripgrep
       element-desktop
       jamesdsp
+      unzip
       # rustrover try this new jetbrains rust IDE when on nixpkgs
 
       # Gaming stuff
@@ -35,6 +36,9 @@
 
       zellij
       lf
+
+      nil # nix language server
+      nixpkgs-fmt # nix code formatter
     ];
   };
 

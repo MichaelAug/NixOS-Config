@@ -21,6 +21,8 @@
 
     # Vulkan
     driSupport = true;
+
+    driSupport32Bit = true;   
   };
 
   environment = {
