@@ -26,6 +26,8 @@
       element-desktop
       jamesdsp
       unzip
+      nvd
+      gitui
       # rustrover try this new jetbrains rust IDE when on nixpkgs
 
       # Gaming stuff
