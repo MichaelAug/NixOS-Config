@@ -19,7 +19,7 @@
       shellAliases = {
         # Assumes you have the config repo in your home dir
         update = "echo Running: sudo nix flake update ~/NixOS-Config/. && sudo nix flake update ~/NixOS-Config/.";
-        switch = "echo Running: sudo nixos-rebuild switch --flake ~/NixOS-Config# && sudo nixos-rebuild switch --flake ~/NixOS-Config#";
+        switch = "echo Running: ~/NixOS-Config/scripts/switch.sh && ~/NixOS-Config/scripts/switch.sh";
 
         ls = "lsd";
       };
