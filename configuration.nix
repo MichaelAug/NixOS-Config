@@ -28,6 +28,10 @@
       unzip
       nvd
       gitui
+
+      # Needed for helix system clipboard
+      xclip
+      wl-clipboard
       # rustrover try this new jetbrains rust IDE when on nixpkgs
 
       # Gaming stuff

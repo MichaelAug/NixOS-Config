@@ -23,8 +23,3 @@
 9. Run `sudo nix flake update` to update packages
 10. Run `sudo nixos-rebuild switch --flake .#nix-desktop` to apply configuration to OS
 11. If everything works, remove non-flake NixOS configuration `sudo rm -rf /etc/nixos/`
-
-Vscodium extension updates:
-Since we have to pin extension versions in config, to update the extensions, need to run `nix-shell scripts/update_vscodium_extensions.sh`.This script will print latest versions of extensions. Take the output and replace the extension values in home.nix.
-The script is taken from https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vscode/extensions/update_installed_exts.sh
-Also if vscodium complains about missing packages even though they are in your flake.nix, you need to launch vscodium from a `nix develop` shell e.g. `codium .`
