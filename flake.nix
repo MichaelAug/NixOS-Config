@@ -1,5 +1,3 @@
-# To rebuild: sudo nixos-rebuild switch --flake .#michael
-
 {
   description = "My system configuration and home manager";
 
@@ -15,6 +13,8 @@
     let
       system = "x86_64-linux";
 
+      username = "michael"; # NOTE: Change this when installing on your machine
+
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -29,10 +29,11 @@
       };
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
-      # TODO: make 'flake update' command output updated packages
       nixosConfigurations = {
         nix-desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { 
+            inherit inputs username;
+          };
           modules = [
             ./configuration.nix
             ./desktop/hardware-configuration.nix
@@ -41,10 +42,12 @@
 
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = { 
+                inherit inputs username; 
+              };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.michael = {
+              home-manager.users.${username} = {
                 imports = [
                   ./home.nix
                   ./desktop_environments/kde/home.nix
@@ -67,7 +70,7 @@
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.michael = {
+              home-manager.users.${username} = {
                 imports = [
                   ./home.nix
                   ./desktop_environments/gnome/home.nix

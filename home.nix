@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username ,... }:
 
 {
   programs = {
@@ -63,7 +63,7 @@
 
     vscode = {
       enable = true;
-      package = pkgs.vscode.fhsWithPackages (ps: with ps; [ rustup zlib openssl.dev pkg-config ]);    
+      package = pkgs.vscode.fhsWithPackages (ps: with ps; [ rustup zlib openssl.dev pkg-config ]);
     };
   };
 
@@ -85,7 +85,7 @@
 
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
-    username = "michael";
-    homeDirectory = "/home/michael";
+    username = username;
+    homeDirectory = "/home/${username}";
   };
 }
