@@ -7,9 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, home-manager } @inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland } @inputs:
     let
       system = "x86_64-linux";
 
@@ -39,6 +40,9 @@
             ./desktop/hardware-configuration.nix
             ./desktop/configuration.nix # desktop specific configuration
             ./desktop_environments/kde/configuration.nix # KDE desktop environment
+            ./desktop_environments/hyprland/configuration.nix
+
+            hyprland.nixosModules.default
 
             home-manager.nixosModules.home-manager
             {
@@ -51,6 +55,7 @@
                 imports = [
                   ./home.nix
                   ./desktop_environments/kde/home.nix
+                  ./desktop_environments/hyprland/home.nix
                 ];
               };
             }
@@ -58,7 +63,7 @@
         };
 
         nix-laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs username; };
           modules = [
             ./configuration.nix
             ./laptop/hardware-configuration.nix
@@ -67,7 +72,7 @@
 
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = { inherit inputs username; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${username} = {
