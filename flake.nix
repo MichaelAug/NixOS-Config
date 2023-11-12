@@ -7,7 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, hyprland } @inputs:
@@ -30,6 +33,7 @@
       };
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
+      # TODO: have separate hyprland_desktop and hyprland_laptop configs
       nixosConfigurations = {
         nix-desktop = nixpkgs.lib.nixosSystem {
           specialArgs = { 
