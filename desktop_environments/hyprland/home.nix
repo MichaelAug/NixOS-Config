@@ -7,6 +7,13 @@
   # waybar
   # kitty
 
+  # Make symbolic link to all config files.
+  # To add more config files, just place them in the config directory
+  # NOTE: you will still need to rebuild-switch to update the config files. The files are
+  # linked to /nix/store, not to the config directory in this repo because this is a flake setup 
+  # TODO: change symlink to files in this repo? Or have home manager as a separate module to speed up updating home?
+  home.file.".config" = { source = ./config; recursive = true; };
+
   home.packages = with pkgs; [
     eww-wayland # Widgets and bar
     waybar # Bar
