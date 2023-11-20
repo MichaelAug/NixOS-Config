@@ -11,29 +11,27 @@
 
   outputs = { self, nixpkgs, home-manager } @inputs:
     let
-      system = "x86_64-linux";
-
       username = "michael"; # NOTE: Change this when installing on your machine
 
+      system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
+
+      common-inherits = { inherit inputs username; };
     in
     {
 
       devShells.${system}.default = pkgs.mkShell {
-        buildInputs = with pkgs; [
-          nil # nix language server
+        buildInputs = [
+          # Add project dependencies here
         ];
       };
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
 
       nixosConfigurations = {
         nix-desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { 
-            inherit inputs username;
-          };
+          specialArgs = common-inherits;
           modules = [
             ./configuration.nix
             ./desktop/hardware-configuration.nix
@@ -42,9 +40,7 @@
 
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { 
-                inherit inputs username; 
-              };
+              home-manager.extraSpecialArgs = common-inherits;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${username} = {
@@ -58,7 +54,7 @@
         };
 
         nix-laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = common-inherits;
           modules = [
             ./configuration.nix
             ./laptop/hardware-configuration.nix
@@ -67,7 +63,7 @@
 
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = common-inherits;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${username} = {
