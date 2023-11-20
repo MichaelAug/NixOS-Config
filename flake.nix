@@ -33,7 +33,7 @@
         nix-desktop = nixpkgs.lib.nixosSystem {
           specialArgs = common-inherits;
           modules = [
-            ./configuration.nix
+            ./base/configuration.nix
             ./desktop/hardware-configuration.nix
             ./desktop/configuration.nix # desktop specific configuration
             ./desktop_environments/kde/configuration.nix # KDE desktop environment
@@ -45,7 +45,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.${username} = {
                 imports = [
-                  ./home.nix
+                  ./base/home.nix
                   ./desktop_environments/kde/home.nix
                 ];
               };
@@ -56,7 +56,7 @@
         nix-laptop = nixpkgs.lib.nixosSystem {
           specialArgs = common-inherits;
           modules = [
-            ./configuration.nix
+            ./base/configuration.nix
             ./laptop/hardware-configuration.nix
             ./laptop/configuration.nix # laptop specific configuration
             ./desktop_environments/gnome/configuration.nix # Gnome desktop environment
@@ -68,7 +68,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.${username} = {
                 imports = [
-                  ./home.nix
+                  ./base/home.nix
                   ./desktop_environments/gnome/home.nix
                 ];
               };

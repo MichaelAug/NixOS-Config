@@ -1,11 +1,14 @@
 { pkgs, ... }:
 
 {
-  # Enable KDE.
+  # Enable KDE and SDDM
   services.xserver = {
     enable = true;
-    displayManager.sddm.enable = true;
     desktopManager.plasma5.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
+    };
   };
 
   networking.firewall = {

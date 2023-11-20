@@ -48,6 +48,7 @@
     ];
   };
 
+
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary software.
 

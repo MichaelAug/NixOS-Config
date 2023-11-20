@@ -1,7 +1,7 @@
 ## Directory Structure 
 
-* **`configuration.nix` and `home.nix` in root of the project:**  
-    Shared configurations across all hosts are stored in these files.
+* **`base` directory:**  
+    Shared configurations across all hosts are stored in this directory.
 
 * **`desktop` and `laptop` directories:**  
   Host-specific configuration files for the 'nix-desktop' and 'nix-laptop' hosts are contained in these directories. Each holds its configuration.nix and hardware-configuration.nix to tailor settings per device.
