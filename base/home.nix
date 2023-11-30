@@ -1,5 +1,13 @@
 { pkgs, username, ... }:
 {
+  # Make symbolic link to all config files.
+  # To add more config files, just place them in the config directory
+  # NOTE: you will still need to rebuild-switch to update the config files. The files are
+  # linked to /nix/store, not to the config directory in this repo because this is a flake setup 
+  # NOTE: don't add configs here while quickly iterating on them, add them once they are more or less complete
+  # NOTE: if you don't see your files appear in ~/.config, you probably forgot to 'git add' them before switching
+  home.file.".config" = { source = ./config; recursive = true; };
+
   programs = {
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
