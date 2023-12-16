@@ -45,6 +45,8 @@
 
       nil # nix language server
       nixpkgs-fmt # nix code formatter
+
+      protonup-qt
     ];
   };
 
