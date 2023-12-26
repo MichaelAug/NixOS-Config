@@ -17,12 +17,15 @@
       enableCompletion = true;
       enableAutosuggestions = true;
       syntaxHighlighting.enable = true;
-      initExtra = ''eval "$(direnv hook zsh)"'';
+      initExtra = ''
+      eval "$(direnv hook zsh)"
+      bindkey '^ ' autosuggest-accept''; # Auto-complete with ctrl-space
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" ];
         theme = "robbyrussell";
       };
+
       shellAliases = {
         # Assumes you have the config repo in your home dir
         update = "echo Running: sudo nix flake update ~/NixOS-Config/. && sudo nix flake update ~/NixOS-Config/.";
@@ -37,6 +40,22 @@
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
+    };
+
+    neovim = {
+      # I'm managing plugins with Lazy so not declaring them here
+      # because i need my nvim config to be easily portable to non-nixos machines
+      enable = true;
+
+      viAlias = true;
+      vimAlias = true;
+      extraPackages = with pkgs; [
+        clang
+
+        # LSPs
+        rust-analyzer
+        lua-language-server
+      ];
     };
 
     helix = {

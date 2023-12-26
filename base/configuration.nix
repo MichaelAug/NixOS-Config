@@ -22,7 +22,6 @@
       neofetch
       lsd
       bat
-      ripgrep
       element-desktop
       jamesdsp
       unzip
@@ -47,6 +46,9 @@
       nixpkgs-fmt # nix code formatter
 
       protonup-qt
+
+      fd
+      wget
     ];
   };
 
