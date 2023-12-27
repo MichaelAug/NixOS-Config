@@ -3,6 +3,11 @@
 {
   gtk = {
     enable = true;
+
+    theme = {
+      name = "Adwaita-dark";
+    };
+
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
@@ -19,8 +24,6 @@
     gnomeExtensions.appindicator
     gnome.gnome-settings-daemon
     gnomeExtensions.auto-activities # show activities when when no app is open
-    # gnomeExtensions.pop-shell
-    # gnomeExtensions.just-perfection
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
     gnomeExtensions.space-bar # Workspace indicator
