@@ -55,6 +55,12 @@
         # LSPs
         rust-analyzer
         lua-language-server
+
+        # Formatters
+        stylua
+
+        # Linters
+        statix
       ];
     };
 
