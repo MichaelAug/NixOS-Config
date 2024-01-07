@@ -30,7 +30,7 @@
         # Assumes you have the config repo in your home dir
         update = "echo Running: sudo nix flake update ~/NixOS-Config/. && sudo nix flake update ~/NixOS-Config/.";
         switch = "echo Running: ~/NixOS-Config/scripts/switch.sh && ~/NixOS-Config/scripts/switch.sh";
-        zl = "zellij --layout hx options --disable-mouse-mode";
+        zl = "zellij --layout nv options --disable-mouse-mode";
         
         ls = "lsd";
       };
@@ -51,47 +51,19 @@
       vimAlias = true;
       extraPackages = with pkgs; [
         clang
+        rustc
+
+        cargo
 
         # LSPs
         rust-analyzer
         lua-language-server
+        nil
 
         # Formatters
         stylua
-
-        # Linters
-        statix
+        nixpkgs-fmt 
       ];
-    };
-
-    helix = {
-      enable = true;
-      settings = {
-        theme = "tokyonight";
-        editor = {
-          mouse = false;
-          line-number = "relative";
-          bufferline = "multiple"; # show file tabs at the top if multiple files opened
-          file-picker.hidden = false; # Do not ignore hidden files
-          cursor-shape.insert = "bar";
-          lsp = {
-            display-messages = true;
-            display-inlay-hints = true;
-          };
-          statusline = {
-            left = [ "mode" "spinner" "file-modification-indicator" ];
-            center = [ "file-name" ];
-            right = [ "diagnostics" "selections" "position" "file-encoding" "file-line-ending" "file-type" "version-control" ];
-            separator = "│";
-            mode.normal = "NORMAL";
-            mode.insert = "INSERT";
-            mode.select = "SELECT";
-          };
-        };
-        keys.normal = {
-          esc = [ "collapse_selection" "keep_primary_selection" ]; # clear selection and multiple cursors on ESC
-        };
-      };
     };
 
     vscode = {

@@ -2,8 +2,8 @@
 {
   environment = {
     variables = {
-      EDITOR = "hx";
-      VISUAL = "hx";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
     };
     systemPackages = with pkgs; [
       git
@@ -26,12 +26,9 @@
       jamesdsp
       unzip
       nvd
-      gitui
 
-      # Needed for helix system clipboard
       xclip
       wl-clipboard
-      # rustrover try this new jetbrains rust IDE when on nixpkgs
 
       # Gaming stuff
       gamescope
@@ -41,9 +38,6 @@
 
       zellij
       lf
-
-      nil # nix language server
-      nixpkgs-fmt # nix code formatter
 
       protonup-qt
 
@@ -92,8 +86,6 @@
   };
 
   boot.supportedFilesystems = [ "ntfs" ];
-
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
