@@ -9,7 +9,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager } @inputs:
+  outputs = { self, nixpkgs, home-manager }@inputs:
     let
       username = "michael"; # NOTE: Change this when installing on your machine
 
@@ -20,8 +20,7 @@
       };
 
       common-inherits = { inherit inputs username; };
-    in
-    {
+    in {
 
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
@@ -44,10 +43,8 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${username} = {
-                imports = [
-                  ./base/home.nix
-                  ./desktop_environments/kde/home.nix
-                ];
+                imports =
+                  [ ./base/home.nix ./desktop_environments/kde/home.nix ];
               };
             }
           ];
@@ -67,10 +64,8 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.${username} = {
-                imports = [
-                  ./base/home.nix
-                  ./desktop_environments/gnome/home.nix
-                ];
+                imports =
+                  [ ./base/home.nix ./desktop_environments/gnome/home.nix ];
               };
             }
           ];

@@ -50,11 +50,6 @@
       viAlias = true;
       vimAlias = true;
       extraPackages = with pkgs; [
-        clang
-        rustc
-
-        cargo
-
         # LSPs
         rust-analyzer
         lua-language-server
@@ -62,7 +57,7 @@
 
         # Formatters
         stylua
-        nixpkgs-fmt 
+        nixfmt 
       ];
     };
 
