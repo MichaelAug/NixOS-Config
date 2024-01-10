@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   environment = {
     variables = {
       EDITOR = "nvim";
@@ -16,7 +15,6 @@
       mpv
       qbittorrent
       libreoffice-fresh
-      vivaldi
       firefox
       mullvad
       neofetch
@@ -35,6 +33,13 @@
       mangohud
       protontricks
       gamemode
+      (lutris.override {
+       extraLibraries = pkgs: [ ];
+       extraPkgs = pkgs: [ 
+        libunwind
+        wineWowPackages.stagingFull
+       ];
+      })
 
       zellij
       lf
@@ -46,7 +51,6 @@
     ];
   };
 
-
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary software.
 
@@ -54,18 +58,19 @@
     # TIP: try using gamescope for games that don't launch on wayland
     packageOverrides = pkgs: {
       steam = pkgs.steam.override {
-        extraPkgs = pkgs: with pkgs; [
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
-          libpng
-          libpulseaudio
-          libvorbis
-          stdenv.cc.cc.lib
-          libkrb5
-          keyutils
-        ];
+        extraPkgs = pkgs:
+          with pkgs; [
+            xorg.libXcursor
+            xorg.libXi
+            xorg.libXinerama
+            xorg.libXScrnSaver
+            libpng
+            libpulseaudio
+            libvorbis
+            stdenv.cc.cc.lib
+            libkrb5
+            keyutils
+          ];
       };
     };
   };
@@ -149,11 +154,7 @@
     corefonts # MS
     (nerdfonts.override {
       # Nerdfont Icons override
-      fonts = [
-        "Ubuntu"
-        "UbuntuMono"
-        "Hack"
-      ];
+      fonts = [ "Ubuntu" "UbuntuMono" "Hack" ];
     })
   ];
 
