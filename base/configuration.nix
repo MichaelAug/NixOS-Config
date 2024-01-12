@@ -3,6 +3,7 @@
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
+      MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
     };
     systemPackages = with pkgs; [
       git

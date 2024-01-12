@@ -24,10 +24,4 @@
 
     driSupport32Bit = true;   
   };
-
-  environment = {
-    variables = {
-      MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
-    };
-  };
 }

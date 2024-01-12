@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 # Only laptop settings
 {
@@ -35,5 +35,30 @@
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # https://nixos.wiki/wiki/Nvidia
+    prime = {
+      # NOTE: These values are very hardware specific!
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:3:0:0";
+
+      # Offload mode
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+    };
   };
+
+  # Creates a boot option that has the discrete GPU always on
+  specialisation = {
+  Gaming.configuration = {
+    system.nixos.tags = [ "NVIDIA-GPU-always-on" ];
+    hardware.nvidia = {
+      prime.offload.enable = lib.mkForce false;
+      prime.offload.enableOffloadCmd = lib.mkForce false;
+      prime.sync.enable = lib.mkForce true;
+    };
+  };
+};
 }
