@@ -25,6 +25,7 @@
       jamesdsp
       unzip
       nvd
+      vivaldi
 
       xclip
       wl-clipboard
@@ -181,7 +182,7 @@
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs          = true
-      keep-derivations      = true
+      keep-derivations      = false
     '';
   };
 }

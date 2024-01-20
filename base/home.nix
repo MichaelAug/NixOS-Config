@@ -1,12 +1,14 @@
-{ pkgs, username, ... }:
-{
+{ pkgs, username, ... }: {
   # Make symbolic link to all config files.
   # To add more config files, just place them in the config directory
   # NOTE: you will still need to rebuild-switch to update the config files. The files are
   # linked to /nix/store, not to the config directory in this repo because this is a flake setup 
   # NOTE: don't add configs here while quickly iterating on them, add them once they are more or less complete
   # NOTE: if you don't see your files appear in ~/.config, you probably forgot to 'git add' them before switching
-  home.file.".config" = { source = ./config; recursive = true; };
+  home.file.".config" = {
+    source = ./config;
+    recursive = true;
+  };
 
   programs = {
     # Let Home Manager install and manage itself.
@@ -18,8 +20,8 @@
       enableAutosuggestions = true;
       syntaxHighlighting.enable = true;
       initExtra = ''
-      eval "$(direnv hook zsh)"
-      bindkey '^ ' autosuggest-accept''; # Auto-complete with ctrl-space
+        eval "$(direnv hook zsh)"
+        bindkey '^ ' autosuggest-accept''; # Auto-complete with ctrl-space
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" ];
@@ -28,10 +30,12 @@
 
       shellAliases = {
         # Assumes you have the config repo in your home dir
-        update = "echo Running: sudo nix flake update ~/NixOS-Config/. && sudo nix flake update ~/NixOS-Config/.";
-        switch = "echo Running: ~/NixOS-Config/scripts/switch.sh && ~/NixOS-Config/scripts/switch.sh";
+        update =
+          "echo Running: sudo nix flake update ~/NixOS-Config/. && sudo nix flake update ~/NixOS-Config/.";
+        switch =
+          "echo Running: ~/NixOS-Config/scripts/switch.sh && ~/NixOS-Config/scripts/switch.sh";
         zl = "zellij --layout nv options --disable-mouse-mode";
-        
+
         ls = "lsd";
       };
     };
@@ -54,23 +58,38 @@
         rust-analyzer
         lua-language-server
         nil
+        nodePackages_latest.pyright
 
         # Formatters
-        stylua
-        nixfmt 
+        stylua # Lua
+        nixfmt # Nix
+        black # Python
+
+        # Diagnostics
+        ruff # Python
       ];
     };
 
     vscode = {
       enable = true;
-      package = pkgs.vscode.fhsWithPackages (ps: with ps; [ rustup zlib openssl.dev pkg-config ]);
+      package = pkgs.vscode.fhsWithPackages
+        (ps: with ps; [ rustup zlib openssl.dev pkg-config ]);
     };
   };
 
   home = {
+    # Add env variable for codelldb path so that apps can find it
+    sessionVariables = {
+      CODELLDB_PATH =
+        "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
+    };
+
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
       htop
+
+      # Debuggers
+      vscode-extensions.vadimcn.vscode-lldb
     ];
 
     # This value determines the Home Manager release that your
