@@ -11,7 +11,9 @@
 
   outputs = { self, nixpkgs, home-manager }@inputs:
     let
-      username = "michael"; # NOTE: Change this when installing on your machine
+      # NOTE: update these vars when installing on new system!
+      username = "michael"; 
+      config_dir = "/home/${username}/NixOS-Config"; # path to this config directory, make sure this is correct!
 
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -19,7 +21,7 @@
         config.allowUnfree = true;
       };
 
-      common-inherits = { inherit inputs username; };
+      common-inherits = { inherit inputs username config_dir; };
     in {
 
       devShells.${system}.default = pkgs.mkShell {

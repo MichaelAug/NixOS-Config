@@ -1,4 +1,4 @@
-{ pkgs, username, ... }: {
+{ pkgs, username, config_dir, ... }: {
   # Make symbolic link to all config files.
   # To add more config files, just place them in the config directory
   # NOTE: you will still need to rebuild-switch to update the config files. The files are
@@ -31,9 +31,9 @@
       shellAliases = {
         # Assumes you have the config repo in your home dir
         update =
-          "echo Running: sudo nix flake update ~/NixOS-Config/. && sudo nix flake update ~/NixOS-Config/.";
+          "echo Running: sudo nix flake update $NIXOS_CONFIG_PATH/. && sudo nix flake update $NIXOS_CONFIG_PATH/.";
         switch =
-          "echo Running: ~/NixOS-Config/scripts/switch.sh && ~/NixOS-Config/scripts/switch.sh";
+          "echo Running: $NIXOS_CONFIG_PATH/scripts/switch.sh && $NIXOS_CONFIG_PATH/scripts/switch.sh";
         zl = "zellij --layout nv options --disable-mouse-mode";
 
         ls = "lsd";
@@ -82,6 +82,8 @@
     sessionVariables = {
       CODELLDB_PATH =
         "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
+
+      NIXOS_CONFIG_PATH = config_dir;
     };
 
     # Packages that should be installed to the user profile.
