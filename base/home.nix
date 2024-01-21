@@ -59,14 +59,17 @@
         lua-language-server
         nil
         nodePackages_latest.pyright
+        nodePackages_latest.bash-language-server
 
         # Formatters
         stylua # Lua
         nixfmt # Nix
         black # Python
+        shfmt
 
         # Diagnostics
         ruff # Python
+        shellcheck
       ];
     };
 
