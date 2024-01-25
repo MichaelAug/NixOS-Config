@@ -1,13 +1,16 @@
-{ pkgs, username, config_dir, ... }: {
-  # Make symbolic link to all config files.
-  # To add more config files, just place them in the config directory
-  # NOTE: you will still need to rebuild-switch to update the config files. The files are
-  # linked to /nix/store, not to the config directory in this repo because this is a flake setup 
-  # NOTE: don't add configs here while quickly iterating on them, add them once they are more or less complete
-  # NOTE: if you don't see your files appear in ~/.config, you probably forgot to 'git add' them before switching
-  home.file.".config" = {
-    source = ./config;
-    recursive = true;
+{ config, pkgs, username, nixos_config_dir, ... }: 
+let
+  mkConfigSymlink = name: config.lib.file.mkOutOfStoreSymlink "${nixos_config_dir}/base/config/${name}";
+in
+{
+  # Utilizes mkConfigSymlink function to create symbolic links for application configurations
+  # from the repo's base/config directory. These symlinks are managed by Home Manager and
+  # may appear to point to /nix/store/, but they actually resolve to the specified paths.
+  # Tip: Ensure new files are staged or committed to the repo before activating a new configuration
+  # to see them reflected in ~/.config.
+  home.file = {
+    ".config/nvim".source = mkConfigSymlink "nvim";
+    ".config/zellij".source = mkConfigSymlink "zellij";
   };
 
   programs = {
@@ -35,7 +38,7 @@
         switch =
           "echo Running: $NIXOS_CONFIG_PATH/scripts/switch.sh && $NIXOS_CONFIG_PATH/scripts/switch.sh";
         zl = "zellij --layout nv options --disable-mouse-mode";
-
+        
         ls = "lsd";
       };
     };
@@ -86,7 +89,7 @@
       CODELLDB_PATH =
         "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
 
-      NIXOS_CONFIG_PATH = config_dir;
+      NIXOS_CONFIG_PATH = nixos_config_dir;
     };
 
     # Packages that should be installed to the user profile.

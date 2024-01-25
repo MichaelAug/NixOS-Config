@@ -24,12 +24,14 @@
    };
    ```
 1. Run `sudo nixos-rebuild switch`
-1. Enter shell with `nix-shell -p git` and clone this repo
-1. `cd` into the cloned repo directory
+1. Enter shell with `nix-shell -p git` and clone this repo (make sure to init all submodules!)
 1. change the "username" variable in flake.nix to your desired user name
-1. Modify `desktop/configuration.nix` and/or `laptop/configuration.nix`: remove my driver configuration and add your own
-1. Copy your hardware configuration into appropriate profile e.g. if using desktop, place it in desktop/ `sudo cp /etc/nixos/hardware-configuration.nix ~/[path to this repo]/desktop/`
-1. Run `sudo nixos-rebuild boot --flake .#nix-desktop` to switch to grub
+1. Modify `desktop/configuration.nix` and/or `laptop/configuration.nix`: remove my driver configurations and add your own
+1. Copy your hardware configuration into appropriate profile e.g. if using nix-desktop, place it in desktop/ `sudo cp /etc/nixos/hardware-configuration.nix ~/[path to this repo]/desktop/`
 1. Run `sudo nix flake update` to update packages
 1. Run `sudo nixos-rebuild switch --flake .#nix-desktop` to apply configuration to OS
 1. If everything works, remove non-flake NixOS configuration `sudo rm -rf /etc/nixos/`
+
+## After Setup ##
+1. To update packages run 'update'
+1. To switch to new configuration run 'switch'

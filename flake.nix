@@ -13,7 +13,7 @@
     let
       # NOTE: update these vars when installing on new system!
       username = "michael"; 
-      config_dir = "/home/${username}/NixOS-Config"; # path to this config directory, make sure this is correct!
+      nixos_config_dir = "/home/${username}/NixOS-Config"; # path to this config directory, make sure this is correct!
 
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -21,7 +21,7 @@
         config.allowUnfree = true;
       };
 
-      common-inherits = { inherit inputs username config_dir; };
+      common-inherits = { inherit inputs username nixos_config_dir; };
     in {
 
       devShells.${system}.default = pkgs.mkShell {
