@@ -6,9 +6,9 @@
   networking.hostName = "nix-laptop"; # Define your hostname.
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+  services.xserver.xkb = {
+    layout = "gb";
+    variant = "";
   };
 
   # Make sure opengl is enabled

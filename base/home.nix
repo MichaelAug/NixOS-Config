@@ -95,6 +95,7 @@ in
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
       htop
+      lact
 
       # Debuggers
       vscode-extensions.vadimcn.vscode-lldb

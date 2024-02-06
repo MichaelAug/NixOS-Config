@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, username, ... }: {
   environment = {
     variables = {
       EDITOR = "nvim";
@@ -26,6 +26,7 @@
       unzip
       nvd
       vivaldi
+      syncthingtray
 
       xclip
       wl-clipboard
@@ -36,16 +37,14 @@
       protontricks
       gamemode
       (lutris.override {
-       extraLibraries = pkgs: [ ];
-       extraPkgs = pkgs: [ 
-        libunwind
-        wineWowPackages.stagingFull
-       ];
+        extraLibraries = pkgs: [ ];
+        extraPkgs = pkgs: [ libunwind wineWowPackages.stagingFull ];
       })
 
       zellij
       lf
 
+      lm_sensors
       protonup-qt
 
       fd
@@ -115,24 +114,33 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
-  # services.flatpak.enable = true;
+  services = {
+    # Enable CUPS to print documents.
+    printing.enable = true;
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+    # Enable mullvad daemon
+    mullvad-vpn.enable = true;
 
-  # Enable mullvad daemon
-  services.mullvad-vpn.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+
+    syncthing = {
+        enable = true;
+        user = username;
+        openDefaultPorts = true;
+        dataDir = "/home/${username}/Sync";    # Default folder for new synced folders
+        configDir = "/home/${username}/.config/syncthing";   # Folder for Syncthing's settings and keys
+    };
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.michael = {

@@ -7,9 +7,9 @@
   networking.hostName = "nix-desktop"; # Define your hostname.
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "gb";
-    xkbVariant = "";
+    variant = "";
   };
 
   hardware.bluetooth.enable = true;
