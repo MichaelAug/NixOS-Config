@@ -26,6 +26,5 @@
     gnomeExtensions.auto-activities # show activities when when no app is open
     gnomeExtensions.dash-to-dock
     gnomeExtensions.blur-my-shell
-    gnomeExtensions.space-bar # Workspace indicator
   ];
 }

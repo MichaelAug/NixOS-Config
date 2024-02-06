@@ -20,7 +20,6 @@
       element-desktop
       jamesdsp
       vivaldi
-      syncthingtray
 
       # Gaming and hardware stuff
       gamescope
