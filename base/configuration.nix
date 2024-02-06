@@ -1,37 +1,28 @@
 { pkgs, username, ... }: {
   environment = {
     variables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
       MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
     };
     systemPackages = with pkgs; [
-      git
+      nvd
+
+      # User apps
       bitwarden
       spotify
       discord
       authy
       standardnotes
-      ripgrep
       mpv
       qbittorrent
       libreoffice-fresh
       firefox
       mullvad
-      neofetch
-      lsd
-      bat
       element-desktop
       jamesdsp
-      unzip
-      nvd
       vivaldi
       syncthingtray
 
-      xclip
-      wl-clipboard
-
-      # Gaming stuff
+      # Gaming and hardware stuff
       gamescope
       mangohud
       protontricks
@@ -40,15 +31,9 @@
         extraLibraries = pkgs: [ ];
         extraPkgs = pkgs: [ libunwind wineWowPackages.stagingFull ];
       })
-
-      zellij
-      lf
-
-      lm_sensors
       protonup-qt
-
-      fd
-      wget
+      lact
+      lm_sensors
     ];
   };
 
@@ -76,7 +61,11 @@
     };
   };
 
-  programs.steam.enable = true;
+  
+  programs = {
+    steam.enable = true;
+    zsh.enable = true;
+  };
 
   # Bootloader.
   boot.loader = {
@@ -129,11 +118,13 @@
     };
 
     syncthing = {
-        enable = true;
-        user = username;
-        openDefaultPorts = true;
-        dataDir = "/home/${username}/Sync";    # Default folder for new synced folders
-        configDir = "/home/${username}/.config/syncthing";   # Folder for Syncthing's settings and keys
+      enable = true;
+      user = username;
+      openDefaultPorts = true;
+      dataDir =
+        "/home/${username}/Sync"; # Default folder for new synced folders
+      configDir =
+        "/home/${username}/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
   };
 
@@ -152,7 +143,6 @@
   # Zsh settings (this has to be set here despite home.nix)
   users.users.michael.shell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
-  programs.zsh.enable = true;
 
   fonts.packages = with pkgs; [
     # Fonts

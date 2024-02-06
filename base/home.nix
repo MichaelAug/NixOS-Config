@@ -1,8 +1,9 @@
-{ config, pkgs, username, nixos_config_dir, ... }: 
+{ config, pkgs, username, nixos_config_dir, ... }:
 let
-  mkConfigSymlink = name: config.lib.file.mkOutOfStoreSymlink "${nixos_config_dir}/base/config/${name}";
-in
-{
+  mkConfigSymlink = name:
+    config.lib.file.mkOutOfStoreSymlink
+    "${nixos_config_dir}/base/config/${name}";
+in {
   # Utilizes mkConfigSymlink function to create symbolic links for application configurations
   # from the repo's base/config directory. These symlinks are managed by Home Manager and
   # may appear to point to /nix/store/, but they actually resolve to the specified paths.
@@ -38,8 +39,12 @@ in
         switch =
           "echo Running: $NIXOS_CONFIG_PATH/scripts/switch.sh && $NIXOS_CONFIG_PATH/scripts/switch.sh";
         zl = "zellij --layout nv options --disable-mouse-mode";
-        
+
         ls = "lsd";
+
+        ms = "mullvad status";
+        mc = "mullvad connect";
+        md = "mullvad disconnect";
       };
     };
 
@@ -90,12 +95,26 @@ in
         "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
 
       NIXOS_CONFIG_PATH = nixos_config_dir;
+      EDITOR = "nvim";
+      VISUAL = "nvim";
     };
 
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
+      # CLI
       htop
-      lact
+      git
+      ripgrep
+      neofetch
+      lsd
+      bat
+      unzip
+      xclip
+      wl-clipboard
+      zellij
+      lf
+      fd
+      wget
 
       # Debuggers
       vscode-extensions.vadimcn.vscode-lldb
