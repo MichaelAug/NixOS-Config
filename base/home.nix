@@ -68,12 +68,14 @@ in {
         nil
         nodePackages_latest.pyright
         nodePackages_latest.bash-language-server
+        vscode-extensions.llvm-vs-code-extensions.vscode-clangd
 
         # Formatters
         stylua # Lua
         nixfmt # Nix
         black # Python
         shfmt
+        vscode-extensions.xaver.clang-format
 
         # Diagnostics
         ruff # Python
