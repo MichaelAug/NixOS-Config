@@ -2,6 +2,7 @@
 
 # Only desktop settings
 {
+  environment = { systemPackages = with pkgs; [ lact lm_sensors ]; };
 
   # This is set to the same value as the hostname for this configuration in the flake.nix
   networking.hostName = "nix-desktop"; # Define your hostname.
@@ -22,6 +23,6 @@
     # Vulkan
     driSupport = true;
 
-    driSupport32Bit = true;   
+    driSupport32Bit = true;
   };
 }

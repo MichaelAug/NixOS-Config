@@ -14,7 +14,8 @@ in {
       MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
     };
     systemPackages = with pkgs; [
-      nvd
+      # NixOS utils
+      nvd # NixOS version diff tool (used for switch script)
 
       # User apps
       bitwarden
@@ -26,7 +27,6 @@ in {
       qbittorrent
       libreoffice-fresh
       firefox
-      mullvad
       element-desktop
       jamesdsp
       vivaldi
@@ -42,8 +42,6 @@ in {
         extraPkgs = pkgs: [ libunwind wineWowPackages.stagingFull ];
       })
       protonup-qt
-      lact
-      lm_sensors
     ];
   };
 
@@ -115,9 +113,6 @@ in {
   services = {
     # Enable CUPS to print documents.
     printing.enable = true;
-
-    # Enable mullvad daemon
-    mullvad-vpn.enable = true;
 
     pipewire = {
       enable = true;
