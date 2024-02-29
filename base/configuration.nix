@@ -31,6 +31,7 @@ in {
       jamesdsp
       vivaldi
       obsidian
+      qjackctl
 
       # Gaming and hardware stuff
       gamescope
@@ -80,7 +81,6 @@ in {
       enable = true;
       device = "nodev";
 
-      # Uncomment to probe other OS
       useOSProber = true;
       efiSupport = true;
     };
@@ -119,6 +119,7 @@ in {
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      jack.enable = true;
     };
 
     syncthing = {
@@ -141,7 +142,7 @@ in {
   users.users.michael = {
     isNormalUser = true;
     description = "Michael";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "jackaudio" ];
   };
 
   # Zsh settings (this has to be set here despite home.nix)

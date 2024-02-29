@@ -33,7 +33,6 @@ in {
       };
 
       shellAliases = {
-        # Assumes you have the config repo in your home dir
         update =
           "echo Running: sudo nix flake update $NIXOS_CONFIG_PATH/. && sudo nix flake update $NIXOS_CONFIG_PATH/.";
         switch =
@@ -113,6 +112,7 @@ in {
       lf
       fd
       wget
+      lazygit
 
       # Debuggers
       vscode-extensions.vadimcn.vscode-lldb
