@@ -21,8 +21,6 @@ in {
       bitwarden
       spotify
       discord
-      authy
-      standardnotes
       mpv
       qbittorrent
       libreoffice-fresh
@@ -32,6 +30,7 @@ in {
       vivaldi
       obsidian
       qjackctl
+      pavucontrol
 
       # Gaming and hardware stuff
       gamescope
@@ -157,6 +156,7 @@ in {
     jetbrains-mono
     font-awesome # Icons
     corefonts # MS
+    meslo-lgs-nf
     (nerdfonts.override {
       # Nerdfont Icons override
       fonts = [ "Ubuntu" "UbuntuMono" "Hack" ];

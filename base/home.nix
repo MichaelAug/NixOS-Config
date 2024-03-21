@@ -21,7 +21,7 @@ in {
     zsh = {
       enable = true;
       enableCompletion = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       initExtra = ''
         eval "$(direnv hook zsh)"
@@ -113,6 +113,8 @@ in {
       fd
       wget
       lazygit
+      gitui
+      ranger
 
       # Debuggers
       vscode-extensions.vadimcn.vscode-lldb
