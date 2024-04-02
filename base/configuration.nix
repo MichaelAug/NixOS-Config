@@ -1,14 +1,5 @@
-{ pkgs, username, lib, ... }:
-let
-  obsidian = lib.throwIf (lib.versionOlder "25.9.0" pkgs.obsidian.version)
-    "Obsidian no longer requires EOL Electron" (pkgs.obsidian.override {
-      electron = pkgs.electron_25.overrideAttrs (_: {
-        preFixup =
-          "patchelf --add-needed ${pkgs.libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
-        meta.knownVulnerabilities = [ ]; # NixOS/nixpkgs#273611
-      });
-    });
-in {
+{ pkgs, username, ... }:
+{
   environment = {
     variables = {
       MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
@@ -31,6 +22,7 @@ in {
       obsidian
       qjackctl
       pavucontrol
+      peek
 
       # Gaming and hardware stuff
       gamescope
