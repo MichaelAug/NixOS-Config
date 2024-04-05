@@ -67,7 +67,7 @@ in {
 
         # Formatters
         stylua # Lua
-        nixfmt # Nix
+        nixfmt-classic # Nix
         black # Python
         shfmt
         vscode-extensions.xaver.clang-format

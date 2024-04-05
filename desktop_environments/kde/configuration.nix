@@ -2,15 +2,18 @@
 
 {
   # Enable KDE and SDDM
-  services.xserver = {
-    enable = true;
-    desktopManager.plasma5.enable = true;
-    displayManager.sddm = {
+  services ={
+    desktopManager.plasma6.enable = true;
+    xserver = {
       enable = true;
-      theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
+      displayManager.sddm = {
+        enable = true;
+        wayland.enable = false; # Wayland breaks mouse cursor ATM
+        theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
+      };
     };
-  };
 
+  };
   networking.firewall = {
     enable = true;
     allowedTCPPortRanges = [
