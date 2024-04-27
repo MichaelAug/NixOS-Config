@@ -22,7 +22,6 @@
       obsidian
       qjackctl
       pavucontrol
-      peek
 
       # Gaming and hardware stuff
       gamescope

@@ -5,7 +5,7 @@ pkgs.stdenv.mkDerivation {
     owner = "EliverLara";
     repo = "Juno";
     rev = "ocean";
-    sha256 = "sha256-IY+fKWI4JMyIQZO2nhvlDgSerQihADyZ6+tss2evh+g=";
+    sha256 = "sha256-hUc4/9S8/B73NJKLjD8CV62sH9D5GzXgyfzd5/tTSdA=";
   };
   installPhase = ''
     mkdir -p $out

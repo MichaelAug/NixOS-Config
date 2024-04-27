@@ -15,6 +15,9 @@
 
   hardware.bluetooth.enable = true;
 
+  # Enable Function keys (F1, F2...) by default on Apple keyboards
+  boot.kernelParams = [ "hid_apple.fnmode=2" ];
+
   boot.initrd.kernelModules = [ "amdgpu" ];
   hardware.opengl = {
     # Mesa
