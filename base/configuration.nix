@@ -1,5 +1,4 @@
-{ pkgs, username, ... }:
-{
+{ pkgs, username, ... }: {
   environment = {
     variables = {
       MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
@@ -20,7 +19,6 @@
       jamesdsp
       vivaldi
       obsidian
-      qjackctl
       pavucontrol
 
       # Gaming and hardware stuff
@@ -33,6 +31,8 @@
         extraPkgs = pkgs: [ libunwind wineWowPackages.stagingFull ];
       })
       protonup-qt
+
+      godot_4
     ];
   };
 
@@ -99,7 +99,6 @@
     LC_TELEPHONE = "en_GB.UTF-8";
     LC_TIME = "en_GB.UTF-8";
   };
-
   services = {
     # Enable CUPS to print documents.
     printing.enable = true;
@@ -109,7 +108,6 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      jack.enable = true;
     };
 
     syncthing = {
@@ -132,7 +130,7 @@
   users.users.michael = {
     isNormalUser = true;
     description = "Michael";
-    extraGroups = [ "networkmanager" "wheel" "jackaudio" ];
+    extraGroups = [ "networkmanager" "wheel" ];
   };
 
   # Zsh settings (this has to be set here despite home.nix)
