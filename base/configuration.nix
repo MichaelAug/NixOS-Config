@@ -17,7 +17,6 @@
       firefox
       element-desktop
       jamesdsp
-      vivaldi
       obsidian
       pavucontrol
 
