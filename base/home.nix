@@ -64,6 +64,7 @@ in {
         nodePackages_latest.pyright
         nodePackages_latest.bash-language-server
         vscode-extensions.llvm-vs-code-extensions.vscode-clangd
+        ruff-lsp
 
         # Formatters
         stylua # Lua
@@ -71,10 +72,6 @@ in {
         black # Python
         shfmt
         vscode-extensions.xaver.clang-format
-
-        # Diagnostics
-        ruff # Python
-        shellcheck
       ];
     };
 
