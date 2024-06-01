@@ -40,6 +40,11 @@ in {
         zl = "zellij --layout nv options --disable-mouse-mode";
 
         ls = "lsd";
+        gs = "git status";
+        gc = "git commit";
+        ga = "git add .";
+        gd = "git diff";
+        gds = "git diff --staged";
       };
     };
 
