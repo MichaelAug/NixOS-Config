@@ -118,6 +118,11 @@
       configDir =
         "/home/${username}/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
+
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
   };
 
   # Enable sound with pipewire.
