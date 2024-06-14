@@ -66,7 +66,7 @@ in {
         rust-analyzer
         lua-language-server
         nil
-        nodePackages_latest.pyright
+        pyright
         nodePackages_latest.bash-language-server
         vscode-extensions.llvm-vs-code-extensions.vscode-clangd
         ruff-lsp

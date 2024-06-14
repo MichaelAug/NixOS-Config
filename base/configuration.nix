@@ -19,6 +19,7 @@
       jamesdsp
       obsidian
       pavucontrol
+      calibre
 
       # Gaming and hardware stuff
       gamescope
