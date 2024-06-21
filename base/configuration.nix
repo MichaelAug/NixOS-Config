@@ -8,7 +8,7 @@
       nvd # NixOS version diff tool (used for switch script)
 
       # User apps
-      bitwarden
+      bitwarden-desktop
       spotify
       discord
       mpv
