@@ -10,7 +10,7 @@
       # User apps
       bitwarden-desktop
       spotify
-      discord
+      vesktop
       mpv
       qbittorrent
       libreoffice-fresh
@@ -126,8 +126,6 @@
     };
   };
 
-  # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
@@ -135,7 +133,7 @@
   users.users.michael = {
     isNormalUser = true;
     description = "Michael";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "gamemode" ];
   };
 
   # Zsh settings (this has to be set here despite home.nix)
