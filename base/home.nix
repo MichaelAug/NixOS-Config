@@ -39,6 +39,7 @@ in {
           "echo Running: $NIXOS_CONFIG_PATH/scripts/switch.sh && $NIXOS_CONFIG_PATH/scripts/switch.sh";
         zl = "zellij --layout nv options --disable-mouse-mode";
         ls = "lsd";
+        nvd = "neovide --fork";
       };
     };
 

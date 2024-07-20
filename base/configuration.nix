@@ -20,6 +20,7 @@
       obsidian
       pavucontrol
       calibre
+      neovide
 
       # Gaming and hardware stuff
       gamescope
