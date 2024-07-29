@@ -4,9 +4,7 @@
   gtk = {
     enable = true;
 
-    theme = {
-      name = "Adwaita-dark";
-    };
+    theme = { name = "Adwaita-dark"; };
 
     iconTheme = {
       name = "Papirus-Dark";
@@ -20,7 +18,7 @@
   };
 
   home.packages = with pkgs; [
-    gamemode
+    gnome-tweaks
     gnomeExtensions.appindicator
     gnome.gnome-settings-daemon
     gnomeExtensions.auto-activities # show activities when when no app is open
