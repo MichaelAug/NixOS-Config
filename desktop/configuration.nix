@@ -2,15 +2,10 @@
 
 # Only desktop settings
 {
-  environment = { systemPackages = with pkgs; [ 
-    lact 
-    lm_sensors 
-    remmina 
-    ]; 
+  environment = {
+    systemPackages = with pkgs; [ lact lm_sensors remmina ];
 
-    sessionVariables = {
-      STEAM_FORCE_DESKTOPUI_SCALING="1.4";
-    };
+    sessionVariables = { STEAM_FORCE_DESKTOPUI_SCALING = "1.4"; };
   };
 
   # This is set to the same value as the hostname for this configuration in the flake.nix
@@ -28,6 +23,8 @@
   boot.kernelParams = [ "hid_apple.fnmode=2" ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];
+
+  hardware.opengl.enable = true;
 
   hardware.graphics = {
     enable = true;

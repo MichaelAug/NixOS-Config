@@ -11,7 +11,6 @@
       bitwarden-desktop
       spotify
       vesktop
-      mpv
       qbittorrent
       libreoffice-fresh
       firefox
@@ -21,6 +20,7 @@
       pavucontrol
       calibre
       neovide
+      chromium
 
       # Gaming and hardware stuff
       gamescope
