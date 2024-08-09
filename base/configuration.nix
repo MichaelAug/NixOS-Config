@@ -1,4 +1,16 @@
-{ pkgs, username, ... }: {
+{ pkgs, username, ... }:
+let
+  vivaldiWithOverrides = pkgs.vivaldi.overrideAttrs (oldAttrs: {
+    # Needed to work aroung Qt6 issue
+    dontWrapQtApps = false;
+    dontPatchELF = true;
+    nativeBuildInputs = oldAttrs.nativeBuildInputs
+      ++ [ pkgs.kdePackages.wrapQtAppsHook ];
+
+    proprietaryCodecs = true;
+    enableWidevine = false;
+  });
+in {
   environment = {
     variables = {
       MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
@@ -13,14 +25,13 @@
       vesktop
       qbittorrent
       libreoffice-fresh
-      firefox
       element-desktop
       jamesdsp
       obsidian
       pavucontrol
       calibre
       neovide
-      chromium
+      vivaldiWithOverrides
 
       # Gaming and hardware stuff
       gamescope
