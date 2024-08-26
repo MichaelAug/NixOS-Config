@@ -65,6 +65,7 @@ in {
         nodePackages_latest.bash-language-server
         vscode-extensions.llvm-vs-code-extensions.vscode-clangd
         ruff-lsp
+        taplo
 
         # Formatters
         stylua # Lua

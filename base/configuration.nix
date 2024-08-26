@@ -31,6 +31,7 @@ in {
       pavucontrol
       calibre
       neovide
+      blender
       vivaldiWithOverrides
 
       # Gaming and hardware stuff
@@ -44,7 +45,6 @@ in {
       })
       protonup-qt
 
-      godot_4
     ];
   };
 
@@ -136,6 +136,9 @@ in {
       enable = true;
       package = pkgs.mullvad-vpn;
     };
+
+    # Enable SSD trimming
+    fstrim.enable = true;
   };
 
   hardware.pulseaudio.enable = false;

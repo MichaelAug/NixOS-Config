@@ -3,9 +3,13 @@
 # Only desktop settings
 {
   environment = {
-    systemPackages = with pkgs; [ lact lm_sensors remmina ];
+    # systemPackages = with pkgs; [ ];
 
-    sessionVariables = { STEAM_FORCE_DESKTOPUI_SCALING = "1.4"; };
+    sessionVariables = {
+      STEAM_FORCE_DESKTOPUI_SCALING = "1.4";
+      NIXOS_OZONE_WL = "1"; # Force wayland in Electron and Chromium
+    };
+
   };
 
   # This is set to the same value as the hostname for this configuration in the flake.nix
