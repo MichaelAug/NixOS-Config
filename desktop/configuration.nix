@@ -3,7 +3,7 @@
 # Only desktop settings
 {
   environment = {
-    # systemPackages = with pkgs; [ ];
+    systemPackages = with pkgs; [ remmina ];
 
     sessionVariables = {
       STEAM_FORCE_DESKTOPUI_SCALING = "1.4";

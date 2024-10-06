@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, username, inputs, ... }:
 let
   vivaldiWithOverrides = pkgs.vivaldi.overrideAttrs (oldAttrs: {
     # Needed to work aroung Qt6 issue
@@ -33,6 +33,7 @@ in {
       neovide
       blender
       vivaldiWithOverrides
+      inputs.zen-browser.packages."${system}".specific
 
       # Gaming and hardware stuff
       gamescope
