@@ -7,7 +7,7 @@
   Host-specific configuration files for the 'nix-desktop' and 'nix-laptop' hosts are contained in these directories. Each holds its configuration.nix and hardware-configuration.nix to tailor settings per device.
 
 * **`desktop_environments` directory:**  
-  Houses a collection of available desktop environments, including GNOME, KDE, Hyprland, and potentially more. Each environment has its configuration.nix and home.nix.
+  Houses a collection of available desktop environments, including GNOME, KDE, and potentially more. Each environment has its configuration.nix and home.nix.
 
 * **`scripts` directory:**  
   Stores miscellaneous scripts, offering additional functionalities or utilities for the system.
