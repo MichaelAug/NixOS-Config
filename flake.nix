@@ -7,11 +7,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser.url =
-      "github:MarceColl/zen-browser-flake"; # TODO: use nixpkg instead of flake
   };
 
-  outputs = { self, nixpkgs, home-manager, zen-browser }@inputs:
+  outputs = { self, nixpkgs, home-manager, }@inputs:
     let
       # NOTE: update these vars when installing on new system!
       username = "michael";

@@ -1,4 +1,4 @@
-{ pkgs, username, inputs, ... }:
+{ pkgs, username, ... }:
 let
   vivaldiWithOverrides = pkgs.vivaldi.overrideAttrs (oldAttrs: {
     # Needed to work aroung Qt6 issue
@@ -33,7 +33,7 @@ in {
       neovide
       blender
       vivaldiWithOverrides
-      inputs.zen-browser.packages."${system}".specific
+      vscodium.fhs
 
       # Gaming and hardware stuff
       gamescope
@@ -137,6 +137,8 @@ in {
       enable = true;
       package = pkgs.mullvad-vpn;
     };
+
+    flatpak.enable = true;
 
     # Enable SSD trimming
     fstrim.enable = true;

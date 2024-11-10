@@ -34,7 +34,7 @@ in {
 
       shellAliases = {
         update =
-          "echo Running: sudo nix flake update $NIXOS_CONFIG_PATH/. && sudo nix flake update $NIXOS_CONFIG_PATH/.";
+          "echo Running: sudo nix flake update --flake $NIXOS_CONFIG_PATH/. && sudo nix flake update --flake $NIXOS_CONFIG_PATH/.";
         switch =
           "echo Running: $NIXOS_CONFIG_PATH/scripts/switch.sh && $NIXOS_CONFIG_PATH/scripts/switch.sh";
         zl = "zellij --layout nv options --disable-mouse-mode";
@@ -66,6 +66,7 @@ in {
         vscode-extensions.llvm-vs-code-extensions.vscode-clangd
         ruff-lsp
         taplo
+        marksman
 
         # Formatters
         stylua # Lua
@@ -103,7 +104,7 @@ in {
     # Add env variable for codelldb path so that apps can find it
     sessionVariables = {
       CODELLDB_PATH =
-        "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
+        "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/";
 
       NIXOS_CONFIG_PATH = nixos_config_dir;
       EDITOR = "nvim";
