@@ -39,7 +39,6 @@ in {
           "echo Running: $NIXOS_CONFIG_PATH/scripts/switch.sh && $NIXOS_CONFIG_PATH/scripts/switch.sh";
         zl = "zellij --layout nv options --disable-mouse-mode";
         ls = "lsd";
-        nvd = "neovide --fork";
       };
     };
 
@@ -75,12 +74,6 @@ in {
         shfmt
         vscode-extensions.xaver.clang-format
       ];
-    };
-
-    vscode = {
-      enable = true;
-      package = pkgs.vscode.fhsWithPackages
-        (ps: with ps; [ rustup zlib openssl.dev pkg-config ]);
     };
 
     mpv = {

@@ -24,16 +24,16 @@ in {
       spotify
       vesktop
       qbittorrent
-      libreoffice-fresh
+      libreoffice-qt6-fresh
       element-desktop
       jamesdsp
       obsidian
       pavucontrol
       calibre
-      neovide
       blender
       vivaldiWithOverrides
       vscodium.fhs
+      helix
 
       # Gaming and hardware stuff
       gamescope
@@ -140,6 +140,11 @@ in {
 
     flatpak.enable = true;
 
+    ollama = {
+      enable = true;
+      acceleration = "rocm";
+    };
+
     # Enable SSD trimming
     fstrim.enable = true;
   };
@@ -185,6 +190,12 @@ in {
     # Nix Package Manager settings
     settings = {
       auto-optimise-store = true; # Optimise syslinks
+
+      # Get pre-built packages from nix-community
+      extra-substituters = [ "https://nix-community.cachix.org" ];
+      extra-trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
     };
     gc = {
       # Automatic garbage collection

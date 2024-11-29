@@ -3,7 +3,7 @@
 # Only desktop settings
 {
   environment = {
-    systemPackages = with pkgs; [ remmina ];
+    systemPackages = with pkgs; [ remmina kdePackages.kdenlive ];
 
     sessionVariables = {
       STEAM_FORCE_DESKTOPUI_SCALING = "1.4";
