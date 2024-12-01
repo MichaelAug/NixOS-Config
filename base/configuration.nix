@@ -172,10 +172,9 @@ in {
     font-awesome # Icons
     corefonts # MS
     meslo-lgs-nf
-    (nerdfonts.override {
-      # Nerdfont Icons override
-      fonts = [ "Ubuntu" "UbuntuMono" "Hack" ];
-    })
+    nerd-fonts.ubuntu
+    nerd-fonts.ubuntu-mono
+    nerd-fonts.hack
   ];
 
   # This value determines the NixOS release from which the default
