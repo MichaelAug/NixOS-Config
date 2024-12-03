@@ -1,16 +1,4 @@
-{ pkgs, username, ... }:
-let
-  vivaldiWithOverrides = pkgs.vivaldi.overrideAttrs (oldAttrs: {
-    # Needed to work aroung Qt6 issue
-    dontWrapQtApps = false;
-    dontPatchELF = true;
-    nativeBuildInputs = oldAttrs.nativeBuildInputs
-      ++ [ pkgs.kdePackages.wrapQtAppsHook ];
-
-    proprietaryCodecs = true;
-    enableWidevine = false;
-  });
-in {
+{ pkgs, username, ... }: {
   environment = {
     variables = {
       MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
@@ -31,7 +19,6 @@ in {
       pavucontrol
       calibre
       blender
-      vivaldiWithOverrides
       vscodium.fhs
       helix
 
@@ -131,11 +118,6 @@ in {
         "/home/${username}/Sync"; # Default folder for new synced folders
       configDir =
         "/home/${username}/.config/syncthing"; # Folder for Syncthing's settings and keys
-    };
-
-    mullvad-vpn = {
-      enable = true;
-      package = pkgs.mullvad-vpn;
     };
 
     flatpak.enable = true;

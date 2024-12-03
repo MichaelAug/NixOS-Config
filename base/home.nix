@@ -90,7 +90,6 @@ in {
         cache-default = 4000000;
       };
     };
-
   };
 
   home = {
@@ -110,19 +109,15 @@ in {
       htop
       git
       ripgrep
-      neofetch
       lsd
       bat
       unzip
       xclip
       wl-clipboard
-      zellij
       lf
       fd
       wget
       lazygit
-      gitui
-      ranger
 
       # Debuggers
       vscode-extensions.vadimcn.vscode-lldb
