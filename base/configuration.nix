@@ -4,8 +4,10 @@
       MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
     };
     systemPackages = with pkgs; [
-      # NixOS utils
+      # Nix utils
       nvd # NixOS version diff tool (used for switch script)
+      nil
+      nixpkgs-fmt
 
       # User apps
       bitwarden-desktop
@@ -23,45 +25,26 @@
       helix
 
       # Gaming and hardware stuff
-      gamescope
       mangohud
-      protontricks
       gamemode
-      (lutris.override {
-        extraLibraries = pkgs: [ ];
-        extraPkgs = pkgs: [ libunwind wineWowPackages.stagingFull ];
-      })
       protonup-qt
-
     ];
   };
 
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary software.
-
-    # Needed for gamescope to work with steam
-    # TIP: try using gamescope for games that don't launch on wayland
-    packageOverrides = pkgs: {
-      steam = pkgs.steam.override {
-        extraPkgs = pkgs:
-          with pkgs; [
-            xorg.libXcursor
-            xorg.libXi
-            xorg.libXinerama
-            xorg.libXScrnSaver
-            libpng
-            libpulseaudio
-            libvorbis
-            stdenv.cc.cc.lib
-            libkrb5
-            keyutils
-          ];
-      };
-    };
   };
 
   programs = {
-    steam.enable = true;
+    steam = {
+      enable = true;
+      # Open ports in the firewall for Steam Remote Play
+      remotePlay.openFirewall = true;
+      # Open ports in the firewall for Source Dedicated Server
+      dedicatedServer.openFirewall = true;
+      # Open ports in the firewall for Steam Local Network Game Transfers
+      localNetworkGameTransfers.openFirewall = true;
+    };
     zsh.enable = true;
   };
 

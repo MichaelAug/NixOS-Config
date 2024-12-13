@@ -9,10 +9,7 @@ in {
   # may appear to point to /nix/store/, but they actually resolve to the specified paths.
   # Tip: Ensure new files are staged or committed to the repo before activating a new configuration
   # to see them reflected in ~/.config.
-  home.file = {
-    ".config/nvim".source = mkConfigSymlink "nvim";
-    ".config/zellij".source = mkConfigSymlink "zellij";
-  };
+  home.file = { ".config/nvim".source = mkConfigSymlink "nvim"; };
 
   programs = {
     # Let Home Manager install and manage itself.
@@ -37,7 +34,6 @@ in {
           "echo Running: sudo nix flake update --flake $NIXOS_CONFIG_PATH/. && sudo nix flake update --flake $NIXOS_CONFIG_PATH/.";
         switch =
           "echo Running: $NIXOS_CONFIG_PATH/scripts/switch.sh && $NIXOS_CONFIG_PATH/scripts/switch.sh";
-        zl = "zellij --layout nv options --disable-mouse-mode";
         ls = "lsd";
       };
     };
@@ -83,21 +79,11 @@ in {
 
         mpv = pkgs.mpv-unwrapped.override { waylandSupport = true; };
       });
-
-      config = {
-        profile = "high-quality";
-        ytdl-format = "bestvideo+bestaudio";
-        cache-default = 4000000;
-      };
     };
   };
 
   home = {
-    # Add env variable for codelldb path so that apps can find it
     sessionVariables = {
-      CODELLDB_PATH =
-        "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/";
-
       NIXOS_CONFIG_PATH = nixos_config_dir;
       EDITOR = "nvim";
       VISUAL = "nvim";
@@ -117,10 +103,6 @@ in {
       lf
       fd
       wget
-      lazygit
-
-      # Debuggers
-      vscode-extensions.vadimcn.vscode-lldb
     ];
 
     # This value determines the Home Manager release that your

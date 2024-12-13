@@ -7,7 +7,7 @@
     xserver = { enable = true; };
     displayManager.sddm = {
       enable = true;
-      wayland.enable = false; # Wayland breaks mouse cursor ATM
+      wayland.enable = true;
       theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
     };
   };
@@ -17,12 +17,10 @@
     allowedTCPPortRanges = [{
       from = 1714;
       to = 1764;
-    } # KDE Connect
-      ];
+    }];
     allowedUDPPortRanges = [{
       from = 1714;
       to = 1764;
-    } # KDE Connect
-      ];
+    }];
   };
 }
