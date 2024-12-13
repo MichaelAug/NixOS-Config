@@ -2,14 +2,9 @@
 let
   mkConfigSymlink = name:
     config.lib.file.mkOutOfStoreSymlink
-    "${nixos_config_dir}/base/config/${name}";
-in {
-  # Utilizes mkConfigSymlink function to create symbolic links for application configurations
-  # from the repo's base/config directory. These symlinks are managed by Home Manager and
-  # may appear to point to /nix/store/, but they actually resolve to the specified paths.
-  # Tip: Ensure new files are staged or committed to the repo before activating a new configuration
-  # to see them reflected in ~/.config.
-  home.file = { ".config/nvim".source = mkConfigSymlink "nvim"; };
+      "${nixos_config_dir}/base/config/${name}";
+in
+{
 
   programs = {
     # Let Home Manager install and manage itself.
@@ -44,34 +39,13 @@ in {
       nix-direnv.enable = true;
     };
 
-    neovim = {
-      # I'm managing plugins with Lazy so not declaring them here
-      # because i need my nvim config to be easily portable to non-nixos machines
+    helix = {
       enable = true;
-
-      viAlias = true;
-      vimAlias = true;
       extraPackages = with pkgs; [
-        # LSPs
-        rust-analyzer
-        lua-language-server
-        nil
-        pyright
         nodePackages_latest.bash-language-server
-        vscode-extensions.llvm-vs-code-extensions.vscode-clangd
-        ruff-lsp
-        taplo
-        marksman
-
-        # Formatters
-        stylua # Lua
-        nixfmt-classic # Nix
-        black # Python
         shfmt
-        vscode-extensions.xaver.clang-format
       ];
     };
-
     mpv = {
       enable = true;
       package = (pkgs.mpv-unwrapped.wrapper {
@@ -85,8 +59,8 @@ in {
   home = {
     sessionVariables = {
       NIXOS_CONFIG_PATH = nixos_config_dir;
-      EDITOR = "nvim";
-      VISUAL = "nvim";
+      EDITOR = "hx";
+      VISUAL = "hx";
     };
 
     # Packages that should be installed to the user profile.
@@ -104,6 +78,13 @@ in {
       fd
       wget
     ];
+
+    # Utilizes mkConfigSymlink function to create symbolic links for application configurations
+    # from the repo's base/config directory. These symlinks are managed by Home Manager and
+    # may appear to point to /nix/store/, but they actually resolve to the specified paths.
+    # Tip: Ensure new files are staged or committed to the repo before activating a new configuration
+    # to see them reflected in ~/.config.
+    file = { ".config/helix".source = mkConfigSymlink "helix"; };
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage

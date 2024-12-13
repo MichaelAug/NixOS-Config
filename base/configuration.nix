@@ -22,7 +22,6 @@
       calibre
       blender
       vscodium.fhs
-      helix
 
       # Gaming and hardware stuff
       mangohud
