@@ -24,7 +24,9 @@
   hardware.bluetooth.enable = true;
 
   # Enable Function keys (F1, F2...) by default on Apple keyboards
-  boot.kernelParams = [ "hid_apple.fnmode=2" ];
+  # NOTE: disable amd_pstate driver because it's not supported on my CPU
+  # UPDATE THIS SETTING IF YOU GET A NEW CPU
+  boot.kernelParams = [ "hid_apple.fnmode=2" "amd_pstate=disable" ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];
 

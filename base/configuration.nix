@@ -12,7 +12,6 @@
       # User apps
       bitwarden-desktop
       spotify
-      vesktop
       qbittorrent
       libreoffice-qt6-fresh
       jamesdsp
@@ -20,8 +19,15 @@
       pavucontrol
       calibre
       blender
-      vscodium.fhs
-
+      vscode.fhs
+      discord-ptb
+      (freerdp.override {
+          buildInputs = [ cmake ];
+          configureFlags = [
+            "-DWITH_VERBOSE_WINPR_ASSERT=OFF" # Disable debug build options
+          ];
+        })
+      
       # Gaming and hardware stuff
       mangohud
       gamemode
