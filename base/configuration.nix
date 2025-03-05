@@ -21,12 +21,7 @@
       blender
       vscode.fhs
       discord-ptb
-      (freerdp.override {
-          buildInputs = [ cmake ];
-          configureFlags = [
-            "-DWITH_VERBOSE_WINPR_ASSERT=OFF" # Disable debug build options
-          ];
-        })
+      freerdp3
       
       # Gaming and hardware stuff
       mangohud
