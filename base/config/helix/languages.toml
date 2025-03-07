@@ -5,3 +5,10 @@ auto-format = true
 [language.formatter]
 command = "nixfmt"
 
+[[language]]
+name = "bash"
+auto-format = true
+
+[language.formatter]
+command = "shfmt"
+
