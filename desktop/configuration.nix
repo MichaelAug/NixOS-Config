@@ -3,7 +3,7 @@
 # Only desktop settings
 {
   environment = {
-    systemPackages = with pkgs; [ remmina kdePackages.kdenlive ];
+    systemPackages = with pkgs; [ kdePackages.kdenlive ];
 
     sessionVariables = {
       STEAM_FORCE_DESKTOPUI_SCALING = "1.4";
@@ -26,7 +26,10 @@
   # Enable Function keys (F1, F2...) by default on Apple keyboards
   # NOTE: disable amd_pstate driver because it's not supported on my CPU
   # UPDATE THIS SETTING IF YOU GET A NEW CPU
-  boot.kernelParams = [ "hid_apple.fnmode=2" "amd_pstate=disable" ];
+  boot.kernelParams = [
+    "hid_apple.fnmode=2"
+    "amd_pstate=disable"
+  ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];
 

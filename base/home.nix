@@ -1,8 +1,13 @@
-{ config, pkgs, username, nixos_config_dir, ... }:
+{
+  config,
+  pkgs,
+  username,
+  nixos_config_dir,
+  ...
+}:
 let
-  mkConfigSymlink = name:
-    config.lib.file.mkOutOfStoreSymlink
-      "${nixos_config_dir}/base/config/${name}";
+  mkConfigSymlink =
+    name: config.lib.file.mkOutOfStoreSymlink "${nixos_config_dir}/base/config/${name}";
 in
 {
 
@@ -25,10 +30,8 @@ in
       };
 
       shellAliases = {
-        update =
-          "echo Running: sudo nix flake update --flake $NIXOS_CONFIG_PATH/. && sudo nix flake update --flake $NIXOS_CONFIG_PATH/.";
-        switch =
-          "echo Running: $NIXOS_CONFIG_PATH/scripts/switch.sh && $NIXOS_CONFIG_PATH/scripts/switch.sh";
+        update = "echo Running: sudo nix flake update --flake $NIXOS_CONFIG_PATH/. && sudo nix flake update --flake $NIXOS_CONFIG_PATH/.";
+        switch = "echo Running: $NIXOS_CONFIG_PATH/scripts/switch.sh && $NIXOS_CONFIG_PATH/scripts/switch.sh";
         ls = "lsd";
       };
     };
@@ -48,11 +51,16 @@ in
     };
     mpv = {
       enable = true;
-      package = (pkgs.mpv-unwrapped.wrapper {
-        scripts = with pkgs.mpvScripts; [ uosc sponsorblock ];
+      package = (
+        pkgs.mpv-unwrapped.wrapper {
+          scripts = with pkgs.mpvScripts; [
+            uosc
+            sponsorblock
+          ];
 
-        mpv = pkgs.mpv-unwrapped.override { waylandSupport = true; };
-      });
+          mpv = pkgs.mpv-unwrapped.override { waylandSupport = true; };
+        }
+      );
     };
   };
 
@@ -84,7 +92,9 @@ in
     # may appear to point to /nix/store/, but they actually resolve to the specified paths.
     # Tip: Ensure new files are staged or committed to the repo before activating a new configuration
     # to see them reflected in ~/.config.
-    file = { ".config/helix".source = mkConfigSymlink "helix"; };
+    file = {
+      ".config/helix".source = mkConfigSymlink "helix";
+    };
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage

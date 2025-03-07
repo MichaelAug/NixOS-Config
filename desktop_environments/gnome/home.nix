@@ -4,7 +4,9 @@
   gtk = {
     enable = true;
 
-    theme = { name = "Adwaita-dark"; };
+    theme = {
+      name = "Adwaita-dark";
+    };
 
     iconTheme = {
       name = "Papirus-Dark";

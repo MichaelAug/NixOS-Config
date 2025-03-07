@@ -1,4 +1,5 @@
-{ pkgs, username, ... }: {
+{ pkgs, username, ... }:
+{
   environment = {
     variables = {
       MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
@@ -7,7 +8,7 @@
       # Nix utils
       nvd # NixOS version diff tool (used for switch script)
       nil
-      nixpkgs-fmt
+      nixfmt-rfc-style
 
       # User apps
       bitwarden-desktop
@@ -22,7 +23,7 @@
       vscode.fhs
       discord-ptb
       freerdp3
-      
+
       # Gaming and hardware stuff
       mangohud
       gamemode
@@ -96,10 +97,8 @@
       enable = true;
       user = username;
       openDefaultPorts = true;
-      dataDir =
-        "/home/${username}/Sync"; # Default folder for new synced folders
-      configDir =
-        "/home/${username}/.config/syncthing"; # Folder for Syncthing's settings and keys
+      dataDir = "/home/${username}/Sync"; # Default folder for new synced folders
+      configDir = "/home/${username}/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
 
     flatpak.enable = true;
@@ -119,7 +118,11 @@
   users.users.michael = {
     isNormalUser = true;
     description = "Michael";
-    extraGroups = [ "networkmanager" "wheel" "gamemode" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "gamemode"
+    ];
   };
 
   # Zsh settings (this has to be set here despite home.nix)

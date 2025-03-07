@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 # Only laptop settings
 {
@@ -23,7 +28,9 @@
       libvdpau-va-gl
     ];
   };
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; }; # Force intel-media-driver
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  }; # Force intel-media-driver
 
   # Tell Xorg to use the nvidia driver (also valid for Wayland)
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -59,13 +66,13 @@
 
   # Creates a boot option that has the discrete GPU always on
   specialisation = {
-  Gaming.configuration = {
-    system.nixos.tags = [ "NVIDIA-GPU-always-on" ];
-    hardware.nvidia = {
-      prime.offload.enable = lib.mkForce false;
-      prime.offload.enableOffloadCmd = lib.mkForce false;
-      prime.sync.enable = lib.mkForce true;
+    Gaming.configuration = {
+      system.nixos.tags = [ "NVIDIA-GPU-always-on" ];
+      hardware.nvidia = {
+        prime.offload.enable = lib.mkForce false;
+        prime.offload.enableOffloadCmd = lib.mkForce false;
+        prime.sync.enable = lib.mkForce true;
+      };
     };
   };
-};
 }
