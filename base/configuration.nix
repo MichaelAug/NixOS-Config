@@ -1,14 +1,16 @@
 { pkgs, username, ... }:
 {
   environment = {
+    shells = with pkgs; [ nushell ];
     variables = {
+      STARSHIP_CONFIG = "/home/${username}/.config/starship/starship.toml";
       MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
     };
     systemPackages = with pkgs; [
       # Nix utils
-      nvd # NixOS version diff tool (used for switch script)
-      nil
-      nixfmt-rfc-style
+      nvd # NixOS version diff tool (used for switch script to compare generations)
+      nil # LSP server for Nix, enables editor support like autocompletion and linting
+      nixfmt-rfc-style # Formatter for Nix code, following the RFC 98 style guidelines
 
       # User apps
       bitwarden-desktop
@@ -24,7 +26,7 @@
       discord-ptb
       freerdp3
 
-      # Gaming and hardware stuff
+      # Gaming
       mangohud
       gamemode
       protonup-qt
@@ -45,7 +47,6 @@
       # Open ports in the firewall for Steam Local Network Game Transfers
       localNetworkGameTransfers.openFirewall = true;
     };
-    zsh.enable = true;
   };
 
   # Bootloader.
@@ -123,11 +124,8 @@
       "wheel"
       "gamemode"
     ];
+    shell = pkgs.nushell;
   };
-
-  # Zsh settings (this has to be set here despite home.nix)
-  users.users.michael.shell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh ];
 
   fonts.packages = with pkgs; [
     # Fonts

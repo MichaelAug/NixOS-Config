@@ -10,44 +10,33 @@ let
     name: config.lib.file.mkOutOfStoreSymlink "${nixos_config_dir}/base/config/${name}";
 in
 {
-
   programs = {
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 
-    zsh = {
+    nushell = {
       enable = true;
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-      initExtra = ''
-        eval "$(direnv hook zsh)"
-        bindkey '^ ' autosuggest-accept''; # Auto-complete with ctrl-space
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "git" ];
-        theme = "robbyrussell";
-      };
+      configFile.source = ./config/nushell/config.nu;
 
-      shellAliases = {
-        update = "echo Running: sudo nix flake update --flake $NIXOS_CONFIG_PATH/. && sudo nix flake update --flake $NIXOS_CONFIG_PATH/.";
-        switch = "echo Running: $NIXOS_CONFIG_PATH/scripts/switch.sh && $NIXOS_CONFIG_PATH/scripts/switch.sh";
-        ls = "lsd";
-      };
+      # Export sessions variables defined by home manager
+      environmentVariables = config.home.sessionVariables;
+    };
+    carapace.enable = true;
+    carapace.enableNushellIntegration = true;
+
+    starship = {
+      enable = true;
+      enableNushellIntegration = true;
     };
 
     direnv = {
       enable = true;
-      enableZshIntegration = true;
+      enableNushellIntegration = true;
       nix-direnv.enable = true;
     };
 
     helix = {
       enable = true;
-      extraPackages = with pkgs; [
-        nodePackages_latest.bash-language-server
-        shfmt
-      ];
     };
     mpv = {
       enable = true;
@@ -65,6 +54,13 @@ in
   };
 
   home = {
+    # Uses mkConfigSymlink to link app configs from base/config to ~/.config via Home Manager.
+    # Links may point to /nix/store but resolve correctly. Tip: Stage/commit new files before activation.
+    file = {
+      ".config/helix".source = mkConfigSymlink "helix";
+      ".config/starship".source = mkConfigSymlink "starship";
+    };
+
     sessionVariables = {
       NIXOS_CONFIG_PATH = nixos_config_dir;
       EDITOR = "hx";
@@ -74,27 +70,16 @@ in
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
       # CLI
-      htop
       git
-      ripgrep
-      lsd
-      bat
       unzip
       xclip
       wl-clipboard
-      lf
-      fd
-      wget
-    ];
 
-    # Utilizes mkConfigSymlink function to create symbolic links for application configurations
-    # from the repo's base/config directory. These symlinks are managed by Home Manager and
-    # may appear to point to /nix/store/, but they actually resolve to the specified paths.
-    # Tip: Ensure new files are staged or committed to the repo before activating a new configuration
-    # to see them reflected in ~/.config.
-    file = {
-      ".config/helix".source = mkConfigSymlink "helix";
-    };
+      # Formatters
+      nodePackages_latest.bash-language-server
+      shfmt
+      nufmt
+    ];
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
