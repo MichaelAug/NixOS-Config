@@ -1,7 +1,10 @@
 { pkgs, username, ... }:
 {
   environment = {
-    shells = with pkgs; [ nushell ];
+    shells = with pkgs; [
+      bash
+      nushell
+    ];
     variables = {
       STARSHIP_CONFIG = "/home/${username}/.config/starship/starship.toml";
       MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
@@ -116,15 +119,15 @@
   security.rtkit.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.michael = {
+  users.users."${username}" = {
     isNormalUser = true;
-    description = "Michael";
+    description = "${username}";
     extraGroups = [
       "networkmanager"
       "wheel"
       "gamemode"
     ];
-    shell = pkgs.nushell;
+    shell = pkgs.bash;
   };
 
   fonts.packages = with pkgs; [

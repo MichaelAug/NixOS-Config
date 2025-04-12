@@ -3,6 +3,7 @@
   pkgs,
   username,
   nixos_config_dir,
+  lib,
   ...
 }:
 let
@@ -13,6 +14,19 @@ in
   programs = {
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
+
+    bash = {
+      enable = true;
+
+      # Have bash launch nushelll on startup
+      # This is needed because nushell is not POSIX compliant and can break other apps
+      initExtra = "
+          if [[ ! $(ps T --no-header --format=comm | grep \"^nu$\") && -z $BASH_EXECUTION_STRING ]]; then
+              shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
+              exec \"${lib.getExe config.programs.nushell.package}\" \"$LOGIN_OPTION\"
+          fi
+        ";
+    };
 
     nushell = {
       enable = true;
