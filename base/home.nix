@@ -31,10 +31,8 @@ in
     nushell = {
       enable = true;
       configFile.source = ./config/nushell/config.nu;
-
-      # Export sessions variables defined by home manager
-      environmentVariables = config.home.sessionVariables;
     };
+
     carapace.enable = true;
     carapace.enableNushellIntegration = true;
 
