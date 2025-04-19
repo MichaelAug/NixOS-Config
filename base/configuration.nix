@@ -20,13 +20,12 @@
       spotify
       qbittorrent
       libreoffice-qt6-fresh
-      jamesdsp
       obsidian
       pavucontrol
       calibre
       blender
       vscode.fhs
-      discord-ptb
+      discord
       freerdp3
 
       # Gaming
