@@ -13,6 +13,7 @@
   # Configure keymap in X11
   services = {
     auto-cpufreq.enable = true;
+    power-profiles-daemon.enable = false;
     xserver.xkb = {
       layout = "gb";
       variant = "";
