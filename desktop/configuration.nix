@@ -16,9 +16,17 @@
   networking.hostName = "nix-desktop"; # Define your hostname.
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "gb";
-    variant = "";
+  services = {
+    xserver.xkb = {
+      layout = "gb";
+      variant = "";
+    };
+    sunshine = {
+      enable = true;
+      autoStart = true;
+      capSysAdmin = true;
+      openFirewall = true;
+    };
   };
 
   hardware.bluetooth.enable = true;
