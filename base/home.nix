@@ -14,36 +14,34 @@ in
   programs = {
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
-
-    bash = {
+    zsh = {
       enable = true;
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      initContent = ''
+        eval "$(direnv hook zsh)"
+        bindkey '^ ' autosuggest-accept''; # Auto-complete with ctrl-space
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" ];
+      };
 
-      # Have bash launch nushelll on startup
-      # This is needed because nushell is not POSIX compliant and can break other apps
-      initExtra = "
-          if [[ ! $(ps T --no-header --format=comm | grep \"^nu$\") && -z $BASH_EXECUTION_STRING ]]; then
-              shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=''
-              exec \"${lib.getExe config.programs.nushell.package}\" \"$LOGIN_OPTION\"
-          fi
-        ";
+      shellAliases = {
+        update = "sudo nix flake update --flake $NIXOS_CONFIG_PATH/.";
+        switch = "$NIXOS_CONFIG_PATH/scripts/switch.sh";
+        ls = "lsd";
+      };
     };
-
-    nushell = {
-      enable = true;
-      configFile.source = ./config/nushell/config.nu;
-    };
-
-    carapace.enable = true;
-    carapace.enableNushellIntegration = true;
 
     starship = {
       enable = true;
-      enableNushellIntegration = true;
+      enableZshIntegration = true;
     };
 
     direnv = {
       enable = true;
-      enableNushellIntegration = true;
+      enableZshIntegration = true;
       nix-direnv.enable = true;
     };
 
@@ -82,15 +80,21 @@ in
     # Packages that should be installed to the user profile.
     packages = with pkgs; [
       # CLI
+      htop
       git
+      ripgrep
+      lsd
+      bat
       unzip
       xclip
       wl-clipboard
+      lf
+      fd
+      wget
 
       # Formatters
       nodePackages_latest.bash-language-server
       shfmt
-      nufmt
     ];
 
     # This value determines the Home Manager release that your

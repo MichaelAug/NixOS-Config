@@ -1,10 +1,7 @@
 { pkgs, username, ... }:
 {
   environment = {
-    shells = with pkgs; [
-      bash
-      nushell
-    ];
+    shells = with pkgs; [ zsh ];
     variables = {
       STARSHIP_CONFIG = "/home/${username}/.config/starship/starship.toml";
       MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
@@ -49,6 +46,7 @@
       # Open ports in the firewall for Steam Local Network Game Transfers
       localNetworkGameTransfers.openFirewall = true;
     };
+    zsh.enable = true;
   };
 
   # Bootloader.
@@ -128,7 +126,7 @@
       "wheel"
       "gamemode"
     ];
-    shell = pkgs.bash;
+    shell = pkgs.zsh;
   };
 
   fonts.packages = with pkgs; [
