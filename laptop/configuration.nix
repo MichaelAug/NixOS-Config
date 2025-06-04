@@ -11,9 +11,12 @@
   networking.hostName = "nix-laptop"; # Define your hostname.
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "gb";
-    variant = "";
+  services = {
+    auto-cpufreq.enable = true;
+    xserver.xkb = {
+      layout = "gb";
+      variant = "";
+    };
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
