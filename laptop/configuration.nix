@@ -40,21 +40,27 @@
     # Modesetting is needed for most Wayland compositors
     modesetting.enable = true;
 
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    # Enable this if you have graphical corruption issues or application crashes after waking
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+    # of just the bare essentials.
+    powerManagement.enable = true;
+
     # Use the open source version of the kernel module
     # Only available on driver 515.43.04+
-    open = false;
+    open = true;
 
     # Enable the nvidia settings menu
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
 
     # https://nixos.wiki/wiki/Nvidia
     prime = {
       # NOTE: These values are very hardware specific!
       intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:3:0:0";
+      nvidiaBusId = "PCI:1:0:0";
 
       # Offload mode
       offload = {

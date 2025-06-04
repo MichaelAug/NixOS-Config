@@ -52,18 +52,20 @@
   };
 
   # Bootloader.
-  boot.loader = {
-    grub = {
-      enable = true;
-      device = "nodev";
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems = [ "ntfs" ];
+    loader = {
+      grub = {
+        enable = true;
+        device = "nodev";
 
-      useOSProber = true;
-      efiSupport = true;
+        useOSProber = true;
+        efiSupport = true;
+      };
+      efi.canTouchEfiVariables = true;
     };
-    efi.canTouchEfiVariables = true;
   };
-
-  boot.supportedFilesystems = [ "ntfs" ];
 
   # Enable networking
   networking.networkmanager.enable = true;
