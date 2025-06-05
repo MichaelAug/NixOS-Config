@@ -63,8 +63,11 @@
       };
       efi.canTouchEfiVariables = true;
     };
+    plymouth = {
+      enable = true;
+      theme = "spinner";
+    };
   };
-
   # Enable networking
   networking.networkmanager.enable = true;
 
