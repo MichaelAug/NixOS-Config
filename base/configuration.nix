@@ -20,7 +20,6 @@
       obsidian
       pavucontrol
       calibre
-      blender
       vscode.fhs
       discord
       freerdp3

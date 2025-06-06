@@ -3,7 +3,7 @@
 # Only desktop settings
 {
   environment = {
-    systemPackages = with pkgs; [ kdePackages.kdenlive ];
+    systemPackages = with pkgs; [ kdePackages.kdenlive blender-hip ];
 
     sessionVariables = {
       STEAM_FORCE_DESKTOPUI_SCALING = "1.4";

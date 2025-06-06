@@ -8,9 +8,8 @@
 # Only laptop settings
 {
   # This is set to the same value as the hostname for this configuration in the flake.nix
-  networking.hostName = "nix-laptop"; # Define your hostname.
+  networking.hostName = "nix-laptop";
 
-  # Configure keymap in X11
   services = {
     auto-cpufreq.enable = true;
     power-profiles-daemon.enable = false;
@@ -20,9 +19,6 @@
     };
   };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-  };
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -31,11 +27,21 @@
       libvdpau-va-gl
     ];
   };
+
+  # Add hardware video acceleration
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  };
   environment = {
     sessionVariables = {
       LIBVA_DRIVER_NAME = "iHD";
     }; # Force intel-media-driver
-    systemPackages = with pkgs; [ moonlight-qt ];
+    systemPackages = with pkgs; [
+      moonlight-qt
+      (blender.override {
+        cudaSupport = true;
+      })
+    ];
   };
 
   # Tell Xorg to use the nvidia driver (also valid for Wayland)
@@ -59,32 +65,17 @@
     # Enable the nvidia settings menu
     nvidiaSettings = true;
 
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.latest;
 
-    # https://nixos.wiki/wiki/Nvidia
+    # Always enable discrete GPU
     prime = {
-      # NOTE: These values are very hardware specific!
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-
-      # Offload mode
+      sync.enable = true;
       offload = {
-        enable = true;
-        enableOffloadCmd = true;
+        enable = false;
+        enableOffloadCmd = false;
       };
-    };
-  };
-
-  # Creates a boot option that has the discrete GPU always on
-  specialisation = {
-    Gaming.configuration = {
-      system.nixos.tags = [ "NVIDIA-GPU-always-on" ];
-      hardware.nvidia = {
-        prime.offload.enable = lib.mkForce false;
-        prime.offload.enableOffloadCmd = lib.mkForce false;
-        prime.sync.enable = lib.mkForce true;
-      };
+      nvidiaBusId = "PCI:1:0:0";
+      intelBusId = "PCI:0:2:0";
     };
   };
 }
