@@ -50,16 +50,14 @@ in
     };
     mpv = {
       enable = true;
-      package = (
-        pkgs.mpv-unwrapped.wrapper {
-          scripts = with pkgs.mpvScripts; [
-            uosc
-            sponsorblock
-          ];
-
-          mpv = pkgs.mpv-unwrapped.override { waylandSupport = true; };
-        }
-      );
+      config = {
+        hwdec = "auto-safe";
+        vo = "gpu";
+        gpu-context = "wayland";
+      };
+      scripts = [
+        pkgs.mpvScripts.uosc
+      ];
     };
   };
 
