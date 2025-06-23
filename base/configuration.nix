@@ -109,11 +109,6 @@
 
     flatpak.enable = true;
 
-    ollama = {
-      enable = true;
-      # acceleration = "rocm";
-    };
-
     # Enable SSD trimming
     fstrim.enable = true;
   };

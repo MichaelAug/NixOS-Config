@@ -19,15 +19,25 @@
 
   # Configure keymap in X11
   services = {
-    xserver.xkb = {
-      layout = "gb";
-      variant = "";
+    xserver = {
+      enable = true;
+      xkb = {
+        layout = "gb";
+        variant = "";
+      };
+      videoDrivers = [ "amdgpu" ];
     };
+
     sunshine = {
       enable = true;
       autoStart = false;
       capSysAdmin = true;
       openFirewall = true;
+    };
+
+    ollama = {
+      enable = true;
+      acceleration = "rocm";
     };
   };
 
