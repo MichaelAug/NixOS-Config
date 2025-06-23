@@ -7,8 +7,11 @@
   ...
 }:
 let
-  mkConfigSymlink =
-    name: config.lib.file.mkOutOfStoreSymlink "${nixos_config_dir}/base/config/${name}";
+  # Clean the ./config directory for flake-safe usage (removes .git, .direnv, etc.)
+  configDir = pkgs.lib.cleanSource ./config;
+
+  # Helper to construct absolute Nix store paths to individual config folders
+  mkConfigSymlink = name: "${configDir}/${name}";
 in
 {
   programs = {
@@ -62,8 +65,6 @@ in
   };
 
   home = {
-    # Uses mkConfigSymlink to link app configs from base/config to ~/.config via Home Manager.
-    # Links may point to /nix/store but resolve correctly. Tip: Stage/commit new files before activation.
     file = {
       ".config/helix".source = mkConfigSymlink "helix";
       ".config/starship".source = mkConfigSymlink "starship";
