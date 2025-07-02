@@ -41,8 +41,6 @@
     };
   };
 
-  hardware.bluetooth.enable = true;
-
   # Enable Function keys (F1, F2...) by default on Apple keyboards
   # NOTE: disable amd_pstate driver because it's not supported on my CPU
   # UPDATE THIS SETTING IF YOU GET A NEW CPU

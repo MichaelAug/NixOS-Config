@@ -54,7 +54,7 @@
             ./base/configuration.nix
             ./laptop/hardware-configuration.nix
             ./laptop/configuration.nix # laptop specific configuration
-            ./desktop_environments/gnome/configuration.nix # Gnome desktop environment
+            ./desktop_environments/kde/configuration.nix # KDE desktop environment
 
             home-manager.nixosModules.home-manager
             {
@@ -64,7 +64,7 @@
               home-manager.users.${username} = {
                 imports = [
                   ./base/home.nix
-                  ./desktop_environments/gnome/home.nix
+                  ./desktop_environments/kde/home.nix
                 ];
               };
             }

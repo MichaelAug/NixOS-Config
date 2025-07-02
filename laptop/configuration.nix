@@ -52,35 +52,29 @@
   # Tell Xorg to use the nvidia driver (also valid for Wayland)
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  hardware.nvidia = {
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = true;
+      powerManagement.finegrained = true;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
 
-    # Modesetting is needed for most Wayland compositors
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
-    # of just the bare essentials.
-    powerManagement.enable = false;
-
-    # Use the open source version of the kernel module
-    # Only available on driver 515.43.04+
-    open = false;
-
-    # Enable the nvidia settings menu
-    nvidiaSettings = true;
-
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
-
-    # Always enable discrete GPU
-    prime = {
-      sync.enable = false;
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
+      prime = {
+        sync.enable = false;
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+        nvidiaBusId = "PCI:1:0:0";
+        intelBusId = "PCI:0:2:0";
       };
-      nvidiaBusId = "PCI:1:0:0";
-      intelBusId = "PCI:0:2:0";
     };
   };
+
 }
