@@ -41,12 +41,12 @@
     };
   };
 
-  # Enable Function keys (F1, F2...) by default on Apple keyboards
-  # NOTE: disable amd_pstate driver because it's not supported on my CPU
-  # UPDATE THIS SETTING IF YOU GET A NEW CPU
+  
   boot.kernelParams = [
+    # Enable Function keys (F1, F2...) by default on Apple keyboards
     "hid_apple.fnmode=2"
-    "amd_pstate=disable"
+
+    "amd_pstate=active"
   ];
 
   boot.initrd.kernelModules = [ "amdgpu" ];
