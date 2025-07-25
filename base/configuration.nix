@@ -2,10 +2,6 @@
 {
   environment = {
     shells = with pkgs; [ zsh ];
-    variables = {
-      STARSHIP_CONFIG = "/home/${username}/.config/starship/starship.toml";
-      MANGOHUD_CONFIG = "no_display"; # Hide mangohud on startup
-    };
     systemPackages = with pkgs; [
       # Nix utils
       nvd # NixOS version diff tool (used for switch script to compare generations)

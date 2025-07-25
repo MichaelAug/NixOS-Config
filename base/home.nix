@@ -74,6 +74,12 @@ in
       NIXOS_CONFIG_PATH = nixos_config_dir;
       EDITOR = "hx";
       VISUAL = "hx";
+
+      # Hide mangohud on startup
+      MANGOHUD_CONFIG = "no_display"; 
+
+      # programs.starship module internally sets this env var so need to force overwrite
+      STARSHIP_CONFIG = lib.mkForce "/home/${username}/.config/starship/starship.toml";
     };
 
     # Packages that should be installed to the user profile.
