@@ -18,7 +18,6 @@
       calibre
       vscode.fhs
       discord
-      freerdp3
 
       # Gaming
       mangohud
