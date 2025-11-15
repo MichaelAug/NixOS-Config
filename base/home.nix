@@ -54,9 +54,10 @@ in
     mpv = {
       enable = true;
       config = {
-        hwdec = "auto-safe";
+        hwdec = "auto"; 
         vo = "gpu";
         gpu-context = "wayland";
+        video-sync = "display-resample";
       };
       scripts = [
         pkgs.mpvScripts.uosc
@@ -76,7 +77,7 @@ in
       VISUAL = "hx";
 
       # Hide mangohud on startup
-      MANGOHUD_CONFIG = "no_display"; 
+      MANGOHUD_CONFIG = "no_display";
 
       # programs.starship module internally sets this env var so need to force overwrite
       STARSHIP_CONFIG = lib.mkForce "/home/${username}/.config/starship/starship.toml";

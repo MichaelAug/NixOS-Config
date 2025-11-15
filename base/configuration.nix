@@ -94,6 +94,11 @@
       pulse.enable = true;
     };
 
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
+
     syncthing = {
       enable = true;
       user = username;

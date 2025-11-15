@@ -8,5 +8,6 @@
     kdePackages.kdeconnect-kde
     kdePackages.krunner
     kdePackages.filelight
+    kdePackages.dragon
   ];
 }
