@@ -19,13 +19,15 @@
     };
   };
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      libvdpau-va-gl
-    ];
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        intel-media-driver # LIBVA_DRIVER_NAME=iHD
+        libvdpau-va-gl
+      ];
+    };
   };
 
   # Add hardware video acceleration
@@ -37,7 +39,6 @@
       LIBVA_DRIVER_NAME = "iHD";
     }; # Force intel-media-driver
     systemPackages = with pkgs; [
-      moonlight-qt
       (blender.override {
         cudaSupport = true;
       })
@@ -51,6 +52,7 @@
 
   # Tell Xorg to use the nvidia driver (also valid for Wayland)
   services.xserver.videoDrivers = [ "nvidia" ];
+  services.system76-scheduler.enable = true;
 
   hardware = {
     bluetooth = {
