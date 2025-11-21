@@ -14,6 +14,8 @@
     };
   };
 
+  nixpkgs.config.rocmSupport = true;
+
   # This is set to the same value as the hostname for this configuration in the flake.nix
   networking.hostName = "nix-desktop"; # Define your hostname.
 
@@ -28,20 +30,13 @@
       videoDrivers = [ "amdgpu" ];
     };
 
-    sunshine = {
-      enable = true;
-      autoStart = false;
-      capSysAdmin = true;
-      openFirewall = true;
-    };
-
     ollama = {
       enable = true;
       acceleration = "rocm";
+      rocmOverrideGfx = "gfx1100";
     };
   };
 
-  
   boot.kernelParams = [
     # Enable Function keys (F1, F2...) by default on Apple keyboards
     "hid_apple.fnmode=2"
