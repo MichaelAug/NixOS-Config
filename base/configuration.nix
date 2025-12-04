@@ -12,7 +12,7 @@
       bitwarden-desktop
       spotify
       qbittorrent
-      libreoffice-qt6-fresh
+      libreoffice-qt6-fresh # Look to replace with collabora office
       obsidian
       pavucontrol
       calibre

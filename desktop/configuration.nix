@@ -10,7 +10,6 @@
 
     sessionVariables = {
       STEAM_FORCE_DESKTOPUI_SCALING = "1.4";
-      NIXOS_OZONE_WL = "1"; # Force wayland in Electron and Chromium
     };
   };
 
@@ -28,12 +27,6 @@
         variant = "";
       };
       videoDrivers = [ "amdgpu" ];
-    };
-
-    ollama = {
-      enable = true;
-      acceleration = "rocm";
-      rocmOverrideGfx = "gfx1100";
     };
   };
 
