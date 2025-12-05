@@ -23,6 +23,11 @@
       mangohud
       gamemode
       protonup-qt
+
+      # SDDM Theme
+      (sddm-astronaut.override {
+        embeddedTheme = "purple_leaves"; # Theme variant
+      })
     ];
   };
 
@@ -62,8 +67,26 @@
       theme = "spinner";
     };
   };
-  # Enable networking
-  networking.networkmanager.enable = true;
+
+  networking = {
+    networkmanager.enable = true;
+
+    firewall = {
+      enable = true;
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ];
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -111,6 +134,19 @@
 
     # Enable SSD trimming
     fstrim.enable = true;
+
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "sddm-astronaut-theme";
+      package = pkgs.kdePackages.sddm;
+      extraPackages = with pkgs; [
+        kdePackages.qtsvg
+        kdePackages.qtmultimedia
+        kdePackages.qtvirtualkeyboard
+        sddm-astronaut
+      ];
+    };
   };
 
   security.rtkit.enable = true;

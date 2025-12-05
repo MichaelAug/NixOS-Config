@@ -11,12 +11,18 @@
   networking.hostName = "nix-laptop";
 
   services = {
-    auto-cpufreq.enable = true;
+    auto-cpufreq.enable = false;
     power-profiles-daemon.enable = false;
+    tuned.enable = true;
+    upower.enable = true;
     xserver.xkb = {
       layout = "gb";
       variant = "";
     };
+
+    # Tell Xorg to use the nvidia driver (also valid for Wayland)
+    xserver.videoDrivers = [ "nvidia" ];
+    system76-scheduler.enable = true;
   };
 
   hardware = {
@@ -49,10 +55,6 @@
       '')
     ];
   };
-
-  # Tell Xorg to use the nvidia driver (also valid for Wayland)
-  services.xserver.videoDrivers = [ "nvidia" ];
-  services.system76-scheduler.enable = true;
 
   hardware = {
     bluetooth = {
