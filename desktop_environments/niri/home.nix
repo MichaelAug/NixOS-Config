@@ -1,0 +1,24 @@
+{ pkgs, ... }:
+
+{
+  home.packages = with pkgs; [
+    cliphist # Clipboard history support
+    matugen # Material You color scheme generation
+    cava # Audio visualizer component
+    wlsunset # Night light functionality
+    xdg-desktop-portal-gtk # default fallback portal
+    xdg-desktop-portal-gnome # Enables “Portal” option in screen recorder
+    gnome-keyring # Implements the Secret portal, required for certain apps to work.
+    evolution-data-server # Calendar events
+    kdePackages.polkit-kde-agent-1 # Polkit authentication UI
+    mako # Notification daemon
+    nautilus # File explorer
+    yazi # Terminal file manager
+    fuzzel # App launcher
+    ghostty # Terminal emulator
+    fd # Alternative to 'find' command
+    ripgrep # Better grep
+    networkmanagerapplet # Wifi menu
+    xwayland-satellite # X11 support
+  ];
+}

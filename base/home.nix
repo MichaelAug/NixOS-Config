@@ -69,6 +69,7 @@ in
     file = {
       ".config/helix".source = mkConfigSymlink "helix";
       ".config/starship".source = mkConfigSymlink "starship";
+      ".config/niri".source = mkConfigSymlink "niri";
     };
 
     sessionVariables = {
