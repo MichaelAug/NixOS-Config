@@ -38,6 +38,8 @@
             ./desktop/hardware-configuration.nix
             ./desktop/configuration.nix # desktop specific configuration
             ./desktop_environments/kde/configuration.nix # KDE desktop environment
+            ./desktop_environments/niri/configuration.nix
+
 
             home-manager.nixosModules.home-manager
             {
@@ -48,6 +50,7 @@
                 imports = [
                   ./base/home.nix
                   ./desktop_environments/kde/home.nix
+                  ./desktop_environments/niri/home.nix
                 ];
               };
             }

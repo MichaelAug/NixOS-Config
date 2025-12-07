@@ -7,11 +7,8 @@
   ...
 }:
 let
-  # Clean the ./config directory for flake-safe usage (removes .git, .direnv, etc.)
-  configDir = pkgs.lib.cleanSource ./config;
-
-  # Helper to construct absolute Nix store paths to individual config folders
-  mkConfigSymlink = name: "${configDir}/${name}";
+  mkConfigSymlink =
+    name: config.lib.file.mkOutOfStoreSymlink "${nixos_config_dir}/base/config/${name}";
 in
 {
   programs = {

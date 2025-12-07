@@ -11,13 +11,17 @@
       # User apps
       bitwarden-desktop
       spotify
+      spicetify-cli
       qbittorrent
       libreoffice-qt6-fresh # Look to replace with collabora office
       obsidian
       pavucontrol
       calibre
       vscode.fhs
-      discord
+      (discord.override {
+        withOpenASAR = true;
+        withVencord = true;
+      })
 
       # Gaming
       mangohud
@@ -139,7 +143,6 @@
       enable = true;
       wayland.enable = true;
       theme = "sddm-astronaut-theme";
-      package = pkgs.kdePackages.sddm;
       extraPackages = with pkgs; [
         kdePackages.qtsvg
         kdePackages.qtmultimedia

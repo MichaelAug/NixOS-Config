@@ -18,7 +18,8 @@
     ghostty # Terminal emulator
     fd # Alternative to 'find' command
     ripgrep # Better grep
-    networkmanagerapplet # Wifi menu
     xwayland-satellite # X11 support
+    pywalfox-native # Firefox theming support
+    playerctl # Command line playback control
   ];
 }
