@@ -108,6 +108,12 @@ window-rule {
     open-floating true
 }
 
+// Open steam games in fullscreen
+window-rule { 
+    match app-id=r#"steam_app_\d+"# 
+    open-fullscreen true 
+    }
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
