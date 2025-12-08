@@ -23,8 +23,8 @@
     xserver = {
       enable = true;
       xkb = {
-        layout = "gb";
-        variant = "";
+        layout = "us";
+        options = "grp:win_space_toggle,compose:ralt,ctrl:nocaps";
       };
       videoDrivers = [ "amdgpu" ];
     };

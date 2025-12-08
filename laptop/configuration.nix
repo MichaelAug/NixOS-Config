@@ -17,7 +17,7 @@
     upower.enable = true;
     xserver.xkb = {
       layout = "gb";
-      variant = "";
+      options = "grp:win_space_toggle,compose:ralt,ctrl:nocaps,altwin:swap_alt_win";
     };
 
     # Tell Xorg to use the nvidia driver (also valid for Wayland)
