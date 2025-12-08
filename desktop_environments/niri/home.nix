@@ -21,5 +21,8 @@
     xwayland-satellite # X11 support
     pywalfox-native # Firefox theming support
     playerctl # Command line playback control
+    adw-gtk3 # Noctalia theme
+    nwg-look # gtk settings editor
+    kdePackages.qt6ct # Qt6 Configuration Tool
   ];
 }

@@ -11,7 +11,6 @@
       # User apps
       bitwarden-desktop
       spotify
-      spicetify-cli
       qbittorrent
       libreoffice-qt6-fresh # Look to replace with collabora office
       obsidian

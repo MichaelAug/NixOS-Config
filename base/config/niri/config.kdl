@@ -66,7 +66,17 @@ layout {
     }
 
     struts {}
-}
+
+    tab-indicator {
+        width 8
+        gap 8
+        length total-proportion=0.8
+        position "left"
+        place-within-column
+        hide-when-single-tab
+        }
+
+    }
 
 // Spawn Noctalia shell
 spawn-at-startup "noctalia-shell"
@@ -100,14 +110,12 @@ window-rule {
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
+window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match app-id=r#"^org\.bitwarden$"#
 
     block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
 }
 
 window-rule {
@@ -126,7 +134,17 @@ debug {
   honor-xdg-activation-with-invalid-serial
 }
 
+environment {
+  QT_QPA_PLATFORMTHEME "qt6ct"
+}
+
 binds {
+    // Noctalia binds
+    Mod+Shift+D hotkey-overlay-title="Application Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+    Mod+Shift+S hotkey-overlay-title="Settings" { spawn-sh "noctalia-shell ipc call settings toggle"; }
+    Mod+Shift+C hotkey-overlay-title="Control Center" { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
+    Mod+Shift+X hotkey-overlay-title="Clipboard History" { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
+
     // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
     // when running as a winit window.
     // Mod-Shift-/, which is usually the same as Mod-?,
