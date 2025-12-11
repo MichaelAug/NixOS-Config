@@ -7,10 +7,6 @@
       kdePackages.kdenlive
       blender-hip
     ];
-
-    sessionVariables = {
-      STEAM_FORCE_DESKTOPUI_SCALING = "1.4";
-    };
   };
 
   nixpkgs.config.rocmSupport = true;

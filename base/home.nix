@@ -67,6 +67,7 @@ in
       ".config/helix".source = mkConfigSymlink "helix";
       ".config/starship".source = mkConfigSymlink "starship";
       ".config/niri".source = mkConfigSymlink "niri";
+      ".config/mako".source = mkConfigSymlink "mako";
     };
 
     sessionVariables = {
@@ -79,6 +80,8 @@ in
 
       # programs.starship module internally sets this env var so need to force overwrite
       STARSHIP_CONFIG = lib.mkForce "/home/${username}/.config/starship/starship.toml";
+
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
     };
 
     # Packages that should be installed to the user profile.

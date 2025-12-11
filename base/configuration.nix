@@ -24,7 +24,6 @@
 
       # Gaming
       mangohud
-      gamemode
       protonup-qt
 
       # SDDM Theme
@@ -47,8 +46,16 @@
       dedicatedServer.openFirewall = true;
       # Open ports in the firewall for Steam Local Network Game Transfers
       localNetworkGameTransfers.openFirewall = true;
+
+      gamescopeSession.enable = true;
     };
     zsh.enable = true;
+
+    gamescope = {
+      enable = true;
+      # capSysNice = true;
+    };
+    gamemode.enable = true;
   };
 
   # Bootloader.
