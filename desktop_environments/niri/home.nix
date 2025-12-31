@@ -25,4 +25,18 @@
     nwg-look # gtk settings editor
     kdePackages.qt6ct # Qt6 Configuration Tool
   ];
+
+   services = {
+    udiskie = {
+      enable = true;
+      settings = {
+        # workaround for
+        # https://github.com/nix-community/home-manager/issues/632
+        program_options = {
+          file_manager = "${pkgs.nautilus}/bin/nautilus";
+        };
+      };
+    };
+  };
+ 
 }
