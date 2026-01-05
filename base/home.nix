@@ -67,7 +67,6 @@ in
       ".config/helix".source = mkConfigSymlink "helix";
       ".config/starship".source = mkConfigSymlink "starship";
       ".config/niri".source = mkConfigSymlink "niri";
-      ".config/mako".source = mkConfigSymlink "mako";
     };
 
     sessionVariables = {

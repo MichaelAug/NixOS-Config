@@ -135,6 +135,11 @@ window-rule {
     clip-to-geometry true
 }
 
+window-rule {
+    match app-id=r#"bevy$"#
+    default-column-width { proportion 0.67; }
+}
+
 // Use wallpaper as background in overview mode
 layer-rule {
   match namespace="^noctalia-overview*"
@@ -152,7 +157,7 @@ environment {
 
 binds {
     // Noctalia binds
-    Mod+Shift+D hotkey-overlay-title="Application Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+    Mod+D hotkey-overlay-title="Application Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
     Mod+Shift+S hotkey-overlay-title="Settings" { spawn-sh "noctalia-shell ipc call settings toggle"; }
     Mod+Shift+C hotkey-overlay-title="Control Center" { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
     Mod+Shift+X hotkey-overlay-title="Clipboard History" { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
@@ -163,7 +168,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+Shift+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: noctalia" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.

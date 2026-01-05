@@ -11,7 +11,6 @@
     gnome-keyring # Implements the Secret portal, required for certain apps to work.
     evolution-data-server # Calendar events
     kdePackages.polkit-kde-agent-1 # Polkit authentication UI
-    mako # Notification daemon
     nautilus # File explorer
     yazi # Terminal file manager
     fuzzel # App launcher
@@ -24,6 +23,7 @@
     adw-gtk3 # Noctalia theme
     nwg-look # gtk settings editor
     kdePackages.qt6ct # Qt6 Configuration Tool
+    satty # Screenshot annotation tool
   ];
 
    services = {
