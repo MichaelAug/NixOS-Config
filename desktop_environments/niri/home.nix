@@ -12,13 +12,9 @@
     evolution-data-server # Calendar events
     kdePackages.polkit-kde-agent-1 # Polkit authentication UI
     nautilus # File explorer
-    yazi # Terminal file manager
     fuzzel # App launcher
     ghostty # Terminal emulator
-    fd # Alternative to 'find' command
-    ripgrep # Better grep
     xwayland-satellite # X11 support
-    pywalfox-native # Firefox theming support
     playerctl # Command line playback control
     adw-gtk3 # Noctalia theme
     nwg-look # gtk settings editor

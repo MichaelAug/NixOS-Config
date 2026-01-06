@@ -88,15 +88,16 @@ in
       # CLI
       htop
       git
-      ripgrep
+      ripgrep # Better grep
       lsd
       bat
       unzip
       xclip
       wl-clipboard
       lf
-      fd
+      fd # Alternative to 'find' command
       wget
+      yazi # Terminal file manager
 
       # Formatters
       nodePackages_latest.bash-language-server
