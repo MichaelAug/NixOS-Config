@@ -5,7 +5,7 @@
   environment = {
     systemPackages = with pkgs; [
       kdePackages.kdenlive
-      blender-hip
+      blender
     ];
   };
 

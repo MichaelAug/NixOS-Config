@@ -20,6 +20,7 @@
     nwg-look # gtk settings editor
     kdePackages.qt6ct # Qt6 Configuration Tool
     satty # Screenshot annotation tool
+    fastfetch # system information tool
   ];
 
    services = {

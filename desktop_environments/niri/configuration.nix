@@ -7,4 +7,5 @@
   ];
 
   programs.niri.enable = true;
+  services.gvfs.enable = true; # Enables trash is nautilus
 }
