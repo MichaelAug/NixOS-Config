@@ -7,5 +7,8 @@
   ];
 
   programs.niri.enable = true;
-  services.gvfs.enable = true; # Enables trash is nautilus
+  services = {
+    gvfs.enable = true;
+    displayManager.defaultSession = "niri";
+  };
 }
