@@ -12,7 +12,6 @@
     evolution-data-server # Calendar events
     kdePackages.polkit-kde-agent-1 # Polkit authentication UI
     nautilus # File explorer
-    fuzzel # App launcher
     ghostty # Terminal emulator
     xwayland-satellite # X11 support
     playerctl # Command line playback control

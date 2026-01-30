@@ -6,7 +6,7 @@
       # Nix utils
       nvd # NixOS version diff tool (used for switch script to compare generations)
       nil # LSP server for Nix, enables editor support like autocompletion and linting
-      nixfmt-rfc-style # Formatter for Nix code, following the RFC 98 style guidelines
+      nixfmt # Formatter for Nix code
 
       # User apps
       bitwarden-desktop
