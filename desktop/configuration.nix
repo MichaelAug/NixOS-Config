@@ -24,6 +24,11 @@
       };
       videoDrivers = [ "amdgpu" ];
     };
+
+    ollama = {
+      enable = true;
+      package = pkgs.ollama-rocm;
+    };
   };
 
   boot.kernelParams = [

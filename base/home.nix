@@ -98,6 +98,7 @@ in
       fd # Alternative to 'find' command
       wget
       yazi # Terminal file manager
+      gh # github cli tool
 
       # Formatters
       nodePackages_latest.bash-language-server

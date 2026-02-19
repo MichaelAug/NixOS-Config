@@ -1,6 +1,16 @@
 { pkgs, ... }:
 
 {
+
+  home = {
+    sessionVariables = {
+      XDG_CURRENT_DESKTOP = "niri";
+      QT_QPA_PLATFORM = "wayland";
+      QT_QPA_PLATFORMTHEME = "gtk3";
+      QT_QPA_PLATFORMTHEME_QT6 = "gtk3";
+    };
+  };
+
   home.packages = with pkgs; [
     cliphist # Clipboard history support
     matugen # Material You color scheme generation
@@ -22,7 +32,7 @@
     fastfetch # system information tool
   ];
 
-   services = {
+  services = {
     udiskie = {
       enable = true;
       settings = {
@@ -34,5 +44,4 @@
       };
     };
   };
- 
 }

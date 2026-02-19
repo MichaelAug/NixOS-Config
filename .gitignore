@@ -1,3 +1,4 @@
 .direnv
 **/noctalia.kdl
 **/noctalia.toml
+**/*kdl.backup*
