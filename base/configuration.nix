@@ -5,7 +5,8 @@
     systemPackages = with pkgs; [
       # Nix utils
       nvd # NixOS version diff tool (used for switch script to compare generations)
-      nil # LSP server for Nix, enables editor support like autocompletion and linting
+      nixd # Nix language server
+      nil # Another nix language server
       nixfmt # Formatter for Nix code
 
       # User apps
@@ -15,8 +16,8 @@
       libreoffice-qt6-fresh # Look to replace with collabora office
       obsidian
       pavucontrol
-      calibre
-      vscode.fhs
+      # calibre
+      zed-editor
       (discord.override {
         withOpenASAR = true;
         withVencord = true;
@@ -56,6 +57,9 @@
       # capSysNice = true;
     };
     gamemode.enable = true;
+
+    # Allows running unpatched dynamic binaries on NixOS.
+    nix-ld.enable = true;
   };
 
   # Bootloader.

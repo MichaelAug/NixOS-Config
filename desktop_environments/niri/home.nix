@@ -19,7 +19,6 @@
     xdg-desktop-portal-gtk # default fallback portal
     xdg-desktop-portal-gnome # Enables “Portal” option in screen recorder
     gnome-keyring # Implements the Secret portal, required for certain apps to work.
-    evolution-data-server # Calendar events
     kdePackages.polkit-kde-agent-1 # Polkit authentication UI
     nautilus # File explorer
     ghostty # Terminal emulator

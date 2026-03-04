@@ -31,6 +31,13 @@
     };
   };
 
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 32 * 1024; # 32GB
+    }
+  ];
+
   boot.kernelParams = [
     # Enable Function keys (F1, F2...) by default on Apple keyboards
     "hid_apple.fnmode=2"
