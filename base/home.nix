@@ -51,7 +51,7 @@ in
     mpv = {
       enable = true;
       config = {
-        hwdec = "auto"; 
+        hwdec = "auto";
         vo = "gpu";
         gpu-context = "wayland";
         video-sync = "display-resample";
