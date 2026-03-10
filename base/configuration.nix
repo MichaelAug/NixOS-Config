@@ -16,7 +16,7 @@
       libreoffice-qt6-fresh # Look to replace with collabora office
       obsidian
       pavucontrol
-      # calibre
+      calibre
       zed-editor
       (discord.override {
         withOpenASAR = true;

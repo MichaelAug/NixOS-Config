@@ -38,6 +38,8 @@
     kdePackages.qt6ct # Qt6 Configuration Tool
     satty # Screenshot annotation tool
     fastfetch # system information tool
+    dconf
+    mission-center
   ];
 
   services = {
