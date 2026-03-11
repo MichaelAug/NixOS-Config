@@ -47,15 +47,10 @@
       dedicatedServer.openFirewall = true;
       # Open ports in the firewall for Steam Local Network Game Transfers
       localNetworkGameTransfers.openFirewall = true;
-
-      gamescopeSession.enable = true;
     };
+
     zsh.enable = true;
 
-    gamescope = {
-      enable = true;
-      # capSysNice = true;
-    };
     gamemode.enable = true;
 
     # Allows running unpatched dynamic binaries on NixOS.
@@ -203,22 +198,37 @@
     settings = {
       auto-optimise-store = true; # Optimise syslinks
 
+      # Enable modern Nix CLI + flakes
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+
       # Get pre-built packages from nix-community
-      extra-substituters = [ "https://nix-community.cachix.org" ];
-      extra-trusted-public-keys = [
+      substituters = [
+        "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
+
+      # Keep build outputs for debugging / development
+      keep-outputs = true;
+
+      # Do not retain derivations to reduce store size
+      keep-derivations = false;
+
+      # Use all CPU cores for builds
+      max-jobs = "auto";
+      cores = 0;
     };
+
     gc = {
       # Automatic garbage collection
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 14d";
     };
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      keep-outputs          = true
-      keep-derivations      = false
-    '';
   };
 }
