@@ -35,6 +35,7 @@
     satty # Screenshot annotation tool
     fastfetch # system information tool
     mission-center # System monitor
+    fuzzel # App launcher
   ];
 
   services = {

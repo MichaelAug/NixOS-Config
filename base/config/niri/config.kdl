@@ -162,7 +162,7 @@ debug {
 
 binds {
     // Noctalia binds
-    Mod+D hotkey-overlay-title="Application Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+    Mod+D hotkey-overlay-title="Application Launcher" { spawn-sh "fuzzel"; }
     Mod+Shift+S hotkey-overlay-title="Settings" { spawn-sh "noctalia-shell ipc call settings toggle"; }
     Mod+Shift+C hotkey-overlay-title="Control Center" { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
     Mod+Shift+X hotkey-overlay-title="Clipboard History" { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
