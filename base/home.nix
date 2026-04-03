@@ -60,6 +60,34 @@ in
         pkgs.mpvScripts.uosc
       ];
     };
+
+    zed-editor = {
+      enable = true;
+      userSettings = {
+        theme = {
+          mode = "system";
+          dark = "One Dark";
+          light = "One Light";
+        };
+        hour_format = "hour24";
+        helix_mode = false;
+
+        lsp = {
+          rust-analyzer = {
+            binary = {
+              path_lookup = true;
+            };
+          };
+          nix = {
+            binary = {
+              path_lookup = true;
+            };
+          };
+        };
+        load_direnv = "shell_hook";
+        base_keymap = "VSCode";
+      };
+    };
   };
 
   home = {
@@ -94,14 +122,13 @@ in
       unzip
       xclip
       wl-clipboard
-      lf
       fd # Alternative to 'find' command
       wget
       yazi # Terminal file manager
       gh # github cli tool
 
       # Formatters
-      nodePackages_latest.bash-language-server
+      bash-language-server
       shfmt
     ];
 

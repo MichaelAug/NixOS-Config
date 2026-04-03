@@ -17,7 +17,6 @@
       obsidian
       pavucontrol
       calibre
-      zed-editor
       (discord.override {
         withOpenASAR = true;
         withVencord = true;

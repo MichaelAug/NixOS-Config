@@ -13,8 +13,7 @@
 
   home = {
     sessionVariables = {
-      QT_QPA_PLATFORMTHEME = "gtk3";
-      QT_QPA_PLATFORMTHEME_QT6 = "gtk3";
+      QT_QPA_PLATFORMTHEME = "qt6ct";
     };
   };
 
@@ -36,6 +35,8 @@
     fastfetch # system information tool
     mission-center # System monitor
     fuzzel # App launcher
+    ncdu # Disk usage analyzer
+    zellij # Terminal workspaceq
   ];
 
   services = {

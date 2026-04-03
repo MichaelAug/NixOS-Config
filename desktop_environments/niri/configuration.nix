@@ -16,5 +16,6 @@
     };
     fwupd.enable = true; # Enables firmware updates for devices like SSDs and USB peripherals
     displayManager.defaultSession = "niri";
+    gvfs.enable = true;
   };
 }
