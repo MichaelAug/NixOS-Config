@@ -1,4 +1,9 @@
-{ pkgs, username, ... }:
+{
+  pkgs,
+  username,
+  inputs,
+  ...
+}:
 {
   environment = {
     shells = with pkgs; [ zsh ];
@@ -10,6 +15,7 @@
       nixfmt # Formatter for Nix code
 
       # User apps
+      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
       bitwarden-desktop
       spotify
       qbittorrent
@@ -137,8 +143,6 @@
       dataDir = "/home/${username}/Sync"; # Default folder for new synced folders
       configDir = "/home/${username}/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
-
-    flatpak.enable = true;
 
     # Enable SSD trimming
     fstrim.enable = true;
