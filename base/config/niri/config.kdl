@@ -162,10 +162,11 @@ debug {
 
 binds {
     // Noctalia binds
-    Mod+D hotkey-overlay-title="Application Launcher" { spawn-sh "fuzzel"; }
+    Mod+D hotkey-overlay-title="Application Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
     Mod+Shift+S hotkey-overlay-title="Settings" { spawn-sh "noctalia-shell ipc call settings toggle"; }
     Mod+Shift+C hotkey-overlay-title="Control Center" { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
     Mod+Shift+X hotkey-overlay-title="Clipboard History" { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
+    Mod+Alt+R hotkey-overlay-title="Restart Noctalia Shell" { spawn-sh "QS_CONFIG_PATH= noctalia-shell list -aj|jq -r '.[].pid'|xargs -r kill; sleep 0.2; noctalia-shell -d"; }
 
     // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
     // when running as a winit window.
@@ -173,7 +174,6 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+Shift+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: noctalia" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
 
     Ctrl+Escape hotkey-overlay-title="Run an Application: Mission Center" { spawn "missioncenter"; }

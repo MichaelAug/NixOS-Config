@@ -34,9 +34,10 @@
     satty # Screenshot annotation tool
     fastfetch # system information tool
     mission-center # System monitor
-    fuzzel # App launcher
     ncdu # Disk usage analyzer
     zellij # Terminal workspaceq
+    wvkbd # On screen keyboard
+    jq # JSON processor
   ];
 
   services = {
