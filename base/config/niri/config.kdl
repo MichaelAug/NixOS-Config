@@ -42,6 +42,14 @@ output "HDMI-A-1" {
     position x=760 y=1440
 }
 
+blur {
+    // off
+    passes 3
+    offset 3
+    noise 0.02
+    saturation 1.5
+}
+
 layout {
     // Set gaps around windows in logical pixels.
     gaps 5
@@ -153,6 +161,30 @@ window-rule {
 layer-rule {
   match namespace="^noctalia-overview*"
   place-within-backdrop true
+}
+
+window-rule {
+    match is-floating=false
+    background-effect {
+        blur true
+        xray true
+    }
+}
+
+window-rule {
+
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+layer-rule {
+  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+  background-effect {
+      blur true
+      xray false
+  }
 }
 
 debug {
