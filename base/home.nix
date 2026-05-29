@@ -30,6 +30,7 @@ in
       shellAliases = {
         update = "sudo nix flake update --flake $NIXOS_CONFIG_PATH/.";
         switch = "$NIXOS_CONFIG_PATH/scripts/switch.sh";
+        switch-boot = "$NIXOS_CONFIG_PATH/scripts/switch-boot.sh";
         ls = "lsd";
       };
     };
