@@ -1,12 +1,23 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
+  imports = [
+    inputs.noctalia-greeter.nixosModules.default
+  ];
+
   environment.systemPackages = with pkgs; [
     niri # Wayland compositor
     usbutils # Tools like lsusb for debugging USB devices
   ];
 
-  programs.niri.enable = true; # Enable the Niri Wayland compositor
+  programs = {
+    niri.enable = true; # Enable the Niri Wayland compositor
+
+    noctalia-greeter = {
+      enable = true;
+      package = inputs.noctalia-greeter.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    };
+  };
 
   services = {
     udisks2.enable = true; # Enables mounting drives from file managers

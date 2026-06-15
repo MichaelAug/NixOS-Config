@@ -153,17 +153,6 @@
     # Enable SSD trimming
     fstrim.enable = true;
 
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      theme = "sddm-astronaut-theme";
-      extraPackages = with pkgs; [
-        kdePackages.qtsvg
-        kdePackages.qtmultimedia
-        kdePackages.qtvirtualkeyboard
-        sddm-astronaut
-      ];
-    };
   };
 
   security.rtkit.enable = true;
