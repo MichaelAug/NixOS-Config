@@ -88,7 +88,7 @@ layout {
     }
 
 // Spawn Noctalia shell
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 
 hotkey-overlay {
     skip-at-startup
@@ -145,7 +145,14 @@ window-rule {
 
 window-rule {
     match app-id=r#"bevy$"#
+    match app-id=r#"dev.zed.Zed$"#
+    match app-id="FastFall"
     default-column-width { proportion 0.66667; }
+}
+
+window-rule {
+    match title=r#"Connect a Signal to a Method$"#
+    open-floating true
 }
 
 window-rule {
@@ -154,13 +161,17 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"dev.zed.Zed$"#
-    default-column-width { proportion 0.66667; }
+  match app-id="dev.noctalia.Noctalia.Settings"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
 }
 
 layer-rule {
-  match namespace="^noctalia-overview*"
-  place-within-backdrop true
+  match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+  background-effect {
+    xray false
+  }
 }
 
 window-rule {
@@ -172,7 +183,7 @@ window-rule {
 }
 
 window-rule {
-
+    match is-floating=true
     background-effect {
         blur true
         xray false
@@ -180,11 +191,8 @@ window-rule {
 }
 
 layer-rule {
-  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
-  background-effect {
-      blur true
-      xray false
-  }
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
 }
 
 debug {
@@ -194,11 +202,10 @@ debug {
 
 binds {
     // Noctalia binds
-    Mod+D hotkey-overlay-title="Application Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
-    Mod+Shift+S hotkey-overlay-title="Settings" { spawn-sh "noctalia-shell ipc call settings toggle"; }
-    Mod+Shift+C hotkey-overlay-title="Control Center" { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
-    Mod+Shift+X hotkey-overlay-title="Clipboard History" { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
-    Mod+Alt+R hotkey-overlay-title="Restart Noctalia Shell" { spawn-sh "QS_CONFIG_PATH= noctalia-shell list -aj|jq -r '.[].pid'|xargs -r kill; sleep 0.2; noctalia-shell -d"; }
+    Mod+D hotkey-overlay-title="Application Launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+Shift+S hotkey-overlay-title="Settings" { spawn-sh "noctalia msg settings-toggle"; }
+    Mod+Shift+C hotkey-overlay-title="Control Center" { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Mod+Alt+R hotkey-overlay-title="Reload Noctalia Config" { spawn-sh "noctalia msg config-reload"; }
 
     // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
     // when running as a winit window.

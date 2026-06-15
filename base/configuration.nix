@@ -27,6 +27,9 @@
         withOpenASAR = true;
         withVencord = true;
       })
+      opencode
+      godotPackages_4_6.godot
+      inkscape
 
       # Gaming
       mangohud
@@ -41,6 +44,9 @@
 
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary software.
+    permittedInsecurePackages = [
+      "electron-39.8.10"
+    ];
   };
 
   programs = {

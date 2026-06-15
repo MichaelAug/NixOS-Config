@@ -6,7 +6,7 @@
   ];
 
   programs = {
-    noctalia-shell = {
+    noctalia = {
       enable = true;
     };
   };
