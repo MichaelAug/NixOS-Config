@@ -34,11 +34,6 @@
       # Gaming
       mangohud
       protonup-qt
-
-      # SDDM Theme
-      (sddm-astronaut.override {
-        embeddedTheme = "purple_leaves"; # Theme variant
-      })
     ];
   };
 

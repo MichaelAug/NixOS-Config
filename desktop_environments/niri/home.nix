@@ -23,7 +23,6 @@
     matugen # Material You color scheme generation
     cava # Audio visualizer component
     wlsunset # Night light functionality
-    kdePackages.polkit-kde-agent-1 # Polkit authentication UI
     nautilus # File explorer
     ghostty # Terminal emulator
     xwayland-satellite # X11 support

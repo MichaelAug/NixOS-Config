@@ -47,7 +47,7 @@
             ./base/configuration.nix
             ./desktop/hardware-configuration.nix
             ./desktop/configuration.nix # desktop specific configuration
-            ./desktop_environments/kde/configuration.nix # KDE desktop environment
+            ./desktop_environments/gnome/configuration.nix
             ./desktop_environments/niri/configuration.nix
 
             home-manager.nixosModules.home-manager
@@ -58,7 +58,7 @@
               home-manager.users.${username} = {
                 imports = [
                   ./base/home.nix
-                  ./desktop_environments/kde/home.nix
+                  ./desktop_environments/gnome/home.nix
                   ./desktop_environments/niri/home.nix
                 ];
               };
@@ -72,7 +72,7 @@
             ./base/configuration.nix
             ./laptop/hardware-configuration.nix
             ./laptop/configuration.nix # laptop specific configuration
-            ./desktop_environments/cosmic/configuration.nix # Cosmic desktop environment
+            ./desktop_environments/cosmic/configuration.nix
             ./desktop_environments/niri/configuration.nix
 
             home-manager.nixosModules.home-manager
