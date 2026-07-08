@@ -28,8 +28,10 @@
         withVencord = true;
       })
       opencode
-      godotPackages_4_6.godot
+      godotPackages_4_7.godot
       inkscape
+      gimp
+      krita
 
       # Gaming
       mangohud

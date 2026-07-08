@@ -24,7 +24,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="100%"
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 // To see available screens, run: niri msg outputs
@@ -65,6 +65,7 @@ layout {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
+        proportion 0.95
     }
 
     default-column-width { proportion 0.33333; }
@@ -141,13 +142,6 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
-}
-
-window-rule {
-    match app-id=r#"bevy$"#
-    match app-id=r#"dev.zed.Zed$"#
-    match app-id="FastFall"
-    default-column-width { proportion 0.66667; }
 }
 
 window-rule {

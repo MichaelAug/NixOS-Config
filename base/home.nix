@@ -71,7 +71,8 @@ in
           light = "One Light";
         };
         hour_format = "hour24";
-        helix_mode = false;
+        vim_mode = false;
+        helix_mode = true;
 
         lsp = {
           rust-analyzer = {
@@ -87,7 +88,31 @@ in
         };
         load_direnv = "shell_hook";
         base_keymap = "VSCode";
+        which_key = {
+          enabled = true;
+          delay_ms = 0;
+        };
       };
+      userKeymaps = [
+        {
+          context = "(VimControl && !menu)";
+          bindings = {
+            "space" = null; # Disable the default action vim::WrappingRight to prevent which-key disappearing
+          };
+        }
+        {
+          context = "Workspace";
+          bindings = {
+            "ctrl-alt-f" = "text_finder::Toggle";
+          };
+        }
+        {
+          context = "Editor && vim_mode == insert";
+          bindings = {
+            "ctrl-v" = "editor::Paste";
+          };
+        }
+      ];
     };
   };
 
