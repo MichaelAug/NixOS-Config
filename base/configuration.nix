@@ -9,10 +9,10 @@
     shells = with pkgs; [ zsh ];
     systemPackages = with pkgs; [
       # Nix utils
-      nvd # NixOS version diff tool (used for switch script to compare generations)
       nixd # Nix language server
       nil # Another nix language server
       nixfmt # Formatter for Nix code
+      nh # Nix command helper
 
       # User apps
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -41,9 +41,6 @@
 
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary software.
-    permittedInsecurePackages = [
-      "electron-39.8.10"
-    ];
   };
 
   programs = {

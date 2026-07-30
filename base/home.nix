@@ -28,9 +28,9 @@ in
       };
 
       shellAliases = {
-        update = "sudo nix flake update --flake $NIXOS_CONFIG_PATH/.";
-        switch = "$NIXOS_CONFIG_PATH/scripts/switch.sh";
-        switch-boot = "$NIXOS_CONFIG_PATH/scripts/switch-boot.sh";
+        update = "nix flake update --flake $NH_OS_FLAKE/.";
+        switch = "nh os switch";
+        boot-switch = "nh os boot";
         ls = "lsd";
       };
     };
@@ -124,7 +124,7 @@ in
     };
 
     sessionVariables = {
-      NIXOS_CONFIG_PATH = nixos_config_dir;
+      NH_OS_FLAKE = nixos_config_dir;
       EDITOR = "hx";
       VISUAL = "hx";
 
