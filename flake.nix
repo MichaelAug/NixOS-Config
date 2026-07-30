@@ -26,7 +26,6 @@
 
   outputs =
     inputs@{
-      self,
       nixpkgs,
       home-manager,
       ...
@@ -52,15 +51,17 @@
 
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = common-inherits;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${username} = {
-                imports = [
-                  ./base/home.nix
-                  ./desktop_environments/gnome/home.nix
-                  ./desktop_environments/niri/home.nix
-                ];
+              home-manager = {
+                extraSpecialArgs = common-inherits;
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.${username} = {
+                  imports = [
+                    ./base/home.nix
+                    ./desktop_environments/gnome/home.nix
+                    ./desktop_environments/niri/home.nix
+                  ];
+                };
               };
             }
           ];
@@ -77,14 +78,16 @@
 
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = common-inherits;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.${username} = {
-                imports = [
-                  ./base/home.nix
-                  ./desktop_environments/niri/home.nix
-                ];
+              home-manager = {
+                extraSpecialArgs = common-inherits;
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.${username} = {
+                  imports = [
+                    ./base/home.nix
+                    ./desktop_environments/niri/home.nix
+                  ];
+                };
               };
             }
           ];

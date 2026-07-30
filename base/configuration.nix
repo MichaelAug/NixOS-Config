@@ -11,8 +11,10 @@
       # Nix utils
       nixd # Nix language server
       nil # Another nix language server
-      nixfmt # Formatter for Nix code
+      nixfmt-tree # Formatter for Nix code
       nh # Nix command helper
+      statix # Lints and suggestions for Nix
+      deadnix # Find dead code
 
       # User apps
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default

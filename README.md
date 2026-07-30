@@ -33,5 +33,9 @@
 1. If everything works, remove non-flake NixOS configuration `sudo rm -rf /etc/nixos/`
 
 ## After Setup ##
-1. To update packages run 'update'
-1. To switch to new configuration run 'switch'
+1. To update packages run `update`
+1. To switch to new configuration run `switch`
+
+### Git hooks
+After cloning:
+`git config core.hooksPath .githooks`

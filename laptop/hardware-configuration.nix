@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -13,36 +12,41 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "xhci_pci"
+        "ahci"
+        "nvme"
+        "usb_storage"
+        "sd_mod"
+      ];
+      kernelModules = [ ];
+    };
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "ahci"
-    "nvme"
-    "usb_storage"
-    "sd_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/12bb0a0d-2539-402f-83ad-4c5589121320";
-    fsType = "ext4";
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
   };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/12bb0a0d-2539-402f-83ad-4c5589121320";
+      fsType = "ext4";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/B05C-87E3";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/B05C-87E3";
+      fsType = "vfat";
+      options = [
+        "fmask=0077"
+        "dmask=0077"
+      ];
+    };
 
-  fileSystems."/home/michael/hdd" = {
-    device = "/dev/disk/by-uuid/2385efe4-ec2f-4bf5-a680-a7185eb62724";
-    fsType = "ext4";
-    options = [ "defaults" ];
+    "/home/michael/hdd" = {
+      device = "/dev/disk/by-uuid/2385efe4-ec2f-4bf5-a680-a7185eb62724";
+      fsType = "ext4";
+      options = [ "defaults" ];
+    };
   };
 
   swapDevices = [
