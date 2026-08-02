@@ -101,9 +101,9 @@ in
           };
         }
         {
-          context = "Workspace";
+          context = "(vim_mode == helix_normal || vim_mode == helix_select) && !menu";
           bindings = {
-            "ctrl-alt-f" = "text_finder::Toggle";
+            "space /" = "text_finder::Toggle";
           };
         }
         {
