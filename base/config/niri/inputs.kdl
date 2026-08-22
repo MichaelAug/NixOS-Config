@@ -9,6 +9,11 @@ input {
         numlock
     }
 
+    touchpad {
+        tap
+        natural-scroll
+    }
+
     touch {
         map-to-output "Invalid Vendor Codename - RTK 0x1920 0x19201080"
     }

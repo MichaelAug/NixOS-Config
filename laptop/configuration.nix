@@ -40,13 +40,8 @@
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
   };
   environment = {
-    sessionVariables = {
-      LIBVA_DRIVER_NAME = "iHD";
-    }; # Force intel-media-driver
     systemPackages = with pkgs; [
-      (blender.override {
-        cudaSupport = true;
-      })
+      blender
 
       # Add a wrapper that launches Blender with NVIDIA GPU offload
       (writeShellScriptBin "blender-nvidia" ''
