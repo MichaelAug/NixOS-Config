@@ -8,6 +8,7 @@
   environment.systemPackages = with pkgs; [
     niri # Wayland compositor
     usbutils # Tools like lsusb for debugging USB devices
+    xdg-desktop-portal-gnome
   ];
 
   programs = {
