@@ -21,10 +21,10 @@
       bitwarden-desktop
       spotify
       qbittorrent
-      libreoffice-qt6-fresh # Look to replace with collabora office
+      onlyoffice-desktopeditors
       obsidian
       pavucontrol
-      calibre
+      # calibre
       (discord.override {
         withOpenASAR = true;
         withVencord = true;
@@ -34,6 +34,10 @@
       inkscape
       gimp
       krita
+      errands
+      evolution
+      gnome-calendar
+      udiskie
 
       # Gaming
       mangohud
@@ -150,6 +154,7 @@
     # Enable SSD trimming
     fstrim.enable = true;
 
+    tailscale.enable = true;
   };
 
   security.rtkit.enable = true;
