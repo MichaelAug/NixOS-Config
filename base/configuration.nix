@@ -38,6 +38,7 @@
       evolution
       gnome-calendar
       udiskie
+      restic
 
       # Gaming
       mangohud
