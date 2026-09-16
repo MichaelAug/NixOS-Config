@@ -1,7 +1,4 @@
-{
-  username,
-  ...
-}:
+{ username, ... }:
 
 {
   services.desktopManager.gnome.enable = true;

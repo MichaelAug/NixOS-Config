@@ -19,14 +19,14 @@
 
   programs = {
     niri.enable = true;
-
-    noctalia-greeter = {
-      enable = true;
-      package = inputs.noctalia-greeter.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    };
   };
 
   services = {
+    displayManager.noctalia-greeter = {
+      enable = true;
+      package = inputs.noctalia-greeter.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    };
+
     udisks2.enable = true;
 
     avahi = {
