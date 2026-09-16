@@ -9,7 +9,7 @@
 }:
 {
   home-manager.users.${username} =
-  { config, ... }:
+    { config, ... }:
     {
 
       programs = {
