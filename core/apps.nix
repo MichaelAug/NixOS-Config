@@ -27,12 +27,14 @@
           withOpenASAR = true;
           withVencord = true;
         })
+        syncthingtray
 
         # Game dev
         godotPackages_4_7.godot
         inkscape
         gimp
         krita
+        blender
 
         # CLI
         htop
@@ -42,7 +44,6 @@
         bat
         unzip
         xclip
-        wl-clipboard
         fd # Alternative to 'find' command
         wget
         yazi # Terminal file manager

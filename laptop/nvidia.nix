@@ -4,6 +4,11 @@
   ...
 }:
 
+let
+  intel-vaapi-driver = pkgs.intel-vaapi-driver.override {
+    enableHybridCodec = true;
+  };
+in
 {
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -14,13 +19,8 @@
     extraPackages = with pkgs; [
       intel-media-driver
       libvdpau-va-gl
+      intel-vaapi-driver
     ];
-  };
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override {
-      enableHybridCodec = true;
-    };
   };
 
   hardware.nvidia = {
@@ -45,8 +45,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    blender
-
     (writeShellScriptBin "blender-nvidia" ''
       exec env \
         __NV_PRIME_RENDER_OFFLOAD=1 \

@@ -15,8 +15,6 @@
     niri
     usbutils
     xdg-desktop-portal-gnome
-    udiskie
-    pavucontrol
   ];
 
   programs = {
@@ -75,6 +73,7 @@
           mission-center
           ncdu
           wvkbd
+          pavucontrol
         ];
       };
 

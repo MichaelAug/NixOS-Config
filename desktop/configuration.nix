@@ -1,14 +1,7 @@
-{ pkgs, ... }:
+_:
 
 # Only desktop settings
 {
-  environment = {
-    systemPackages = with pkgs; [
-      # kdePackages.kdenlive
-      blender
-    ];
-  };
-
   # This is set to the same value as the hostname for this configuration in the flake.nix
   networking.hostName = "nix-desktop"; # Define your hostname.
 
