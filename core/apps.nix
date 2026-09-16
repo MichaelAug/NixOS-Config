@@ -8,14 +8,6 @@
   home-manager.users.${username} = {
     home = {
       packages = with pkgs; [
-        # Nix development
-        nixd
-        nil
-        nixfmt-tree
-        nh
-        statix
-        deadnix
-
         # Applications
         inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
         bitwarden-desktop
@@ -50,6 +42,14 @@
         gh # github cli tool
         jq
         fastfetch
+
+        # Nix development
+        nixd
+        nil
+        nixfmt-tree
+        nh
+        statix
+        deadnix
 
         # Formatters
         bash-language-server
