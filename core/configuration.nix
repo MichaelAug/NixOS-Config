@@ -119,9 +119,9 @@
 
       home = {
         file = {
-          ".config/helix".source = mkConfigSymlink config "helix";
-          ".config/starship".source = mkConfigSymlink config "starship";
-          ".config/niri".source = mkConfigSymlink config "niri";
+          ".config/helix".source = mkConfigSymlink config "core/config/helix";
+          ".config/starship".source = mkConfigSymlink config "core/config/starship";
+          ".config/niri".source = mkConfigSymlink config "core/config/niri";
         };
 
         sessionVariables = {

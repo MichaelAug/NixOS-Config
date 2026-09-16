@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   username,
+  mkConfigSymlink,
   ...
 }:
 
@@ -39,15 +40,18 @@
   };
 
   home-manager.users.${username} =
-    # { config, ... }:
+    { config, ... }:
     {
       imports = [
         inputs.noctalia.homeModules.default
       ];
 
       programs.noctalia.enable = true;
-
       home = {
+        file = {
+          ".config/niri".source = mkConfigSymlink config "core/config/niri";
+        };
+
         sessionVariables = {
           QT_QPA_PLATFORMTHEME = "qt6ct";
         };

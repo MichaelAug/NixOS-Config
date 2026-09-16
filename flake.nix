@@ -36,7 +36,7 @@
       nixos_config_dir = "/home/${username}/NixOS-Config"; # path to this config directory, make sure this is correct!
 
       mkConfigSymlink =
-        hmConfig: name: hmConfig.lib.file.mkOutOfStoreSymlink "${nixos_config_dir}/config/${name}";
+        hmConfig: path: hmConfig.lib.file.mkOutOfStoreSymlink "${nixos_config_dir}/${path}";
 
       common-inherits = {
         inherit
