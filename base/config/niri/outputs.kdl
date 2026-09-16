@@ -1,5 +1,5 @@
 // To see available screens, run: niri msg outputs
-output "Iiyama North America PL3486WQ 1251752300707" {
+output "iiyama Corporation PL3486WQ 1251752300707" {
     mode "3440x1440@240.002"
     scale 1.0
     transform "normal"
