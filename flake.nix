@@ -35,62 +35,47 @@
       username = "michael";
       nixos_config_dir = "/home/${username}/NixOS-Config"; # path to this config directory, make sure this is correct!
 
-      common-inherits = { inherit inputs username nixos_config_dir; };
+      mkConfigSymlink =
+        hmConfig: name:
+          hmConfig.lib.file.mkOutOfStoreSymlink
+            "${nixos_config_dir}/config/${name}";
+
+      common-inherits = {
+        inherit
+          inputs
+          username
+          nixos_config_dir
+          mkConfigSymlink
+          ;
+      };
+
+      modulesIn =
+        dir:
+        builtins.filter (file: builtins.match ".*\\.nix" (toString file) != null) (
+          nixpkgs.lib.filesystem.listFilesRecursive dir
+        );
     in
     {
 
       nixosConfigurations = {
         nix-desktop = nixpkgs.lib.nixosSystem {
           specialArgs = common-inherits;
-          modules = [
-            ./base/configuration.nix
-            ./desktop/hardware-configuration.nix
-            ./desktop/configuration.nix # desktop specific configuration
-            ./desktop_environments/gnome/configuration.nix
-            ./desktop_environments/niri/configuration.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                extraSpecialArgs = common-inherits;
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.${username} = {
-                  imports = [
-                    ./base/home.nix
-                    ./desktop_environments/gnome/home.nix
-                    ./desktop_environments/niri/home.nix
-                  ];
-                };
-              };
-            }
-          ];
+          modules =
+            modulesIn ./core
+            ++ modulesIn ./desktop
+            ++ [
+              home-manager.nixosModules.home-manager
+            ];
         };
 
         nix-laptop = nixpkgs.lib.nixosSystem {
           specialArgs = common-inherits;
-          modules = [
-            ./base/configuration.nix
-            ./laptop/hardware-configuration.nix
-            ./laptop/configuration.nix # laptop specific configuration
-            ./desktop_environments/cosmic/configuration.nix
-            ./desktop_environments/niri/configuration.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                extraSpecialArgs = common-inherits;
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.${username} = {
-                  imports = [
-                    ./base/home.nix
-                    ./desktop_environments/niri/home.nix
-                  ];
-                };
-              };
-            }
-          ];
+          modules =
+            modulesIn ./core
+            ++ modulesIn ./laptop
+            ++ [
+              home-manager.nixosModules.home-manager
+            ];
         };
       };
     };
