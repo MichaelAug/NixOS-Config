@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 {
   services.openssh = {
@@ -21,6 +21,10 @@ _:
         ForceCommand internal-sftp
     '';
   };
+
+  environment.systemPackages = with pkgs; [
+    restic
+  ];
 
   # Restic user for the home server backups
   users.users.restic = {

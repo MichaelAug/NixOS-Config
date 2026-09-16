@@ -15,6 +15,8 @@
     niri
     usbutils
     xdg-desktop-portal-gnome
+    udiskie
+    pavucontrol
   ];
 
   programs = {
@@ -70,12 +72,9 @@
           nwg-look
           kdePackages.qt6ct
           satty
-          fastfetch
           mission-center
           ncdu
-          zellij
           wvkbd
-          jq
         ];
       };
 

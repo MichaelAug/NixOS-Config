@@ -1,16 +1,15 @@
-{ username, ... }:
+{ pkgs, ... }:
 
 {
   services.desktopManager.gnome.enable = true;
 
-  home-manager.users.${username} =
-    { pkgs, ... }:
-    {
-      home.packages = with pkgs; [
-        syncthingtray
-        gnome-terminal
-        gnome-tweaks
-        gnome-settings-daemon
-      ];
-    };
+  environment.systemPackages = with pkgs; [
+    syncthingtray
+    gnome-terminal
+    gnome-tweaks
+    gnome-settings-daemon
+    errands
+    evolution
+    gnome-calendar
+  ];
 }
