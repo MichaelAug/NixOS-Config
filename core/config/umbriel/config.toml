@@ -6,10 +6,10 @@
 # Complete documentation: https://docs.noctalia.dev/umbriel/
 
 [include]
-files = ["animation.toml", "input.toml", "keybinds.toml", "layout.toml", "outputs.toml", "rules.toml", "workspaces.toml", "noctalia.toml"]
+files = ["animation.toml", "input.toml", "keybinds.toml", "layout.toml", "outputs.toml", "rules.toml", "workspaces.toml"]
 
 [include.optional]
-files = []
+files = ["noctalia.toml"]
 
 # ─────────────────────────────── General ────────────────────────────────────
 # Configure startup commands, session behavior, environment variables, and

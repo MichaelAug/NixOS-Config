@@ -12,7 +12,7 @@
 
 [animation]
 enabled = true                                  # Master animation switch
-duration_ms = 250                               # Shared duration, 1-10000 ms
+duration_ms = 350                               # Shared duration, 1-10000 ms
 curve = "easeout"                               # Built-in or registered bezier/spring curve name
 
 # Window opening

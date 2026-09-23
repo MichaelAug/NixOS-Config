@@ -46,10 +46,10 @@
 "Mod+J" = "window-focus-down"
 "Mod+K" = "window-focus-up"
 "Mod+L" = "window-focus-right"
-"Mod+Shift+Left" = "column-move-left"
-"Mod+Shift+Down" = "window-move-down"
-"Mod+Shift+Up" = "window-move-up"
-"Mod+Shift+Right" = "column-move-right"
+"Mod+Shift+H" = "column-move-left"
+"Mod+Shift+J" = "window-move-down"
+"Mod+Shift+K" = "window-move-up"
+"Mod+Shift+L" = "column-move-right"
 "Mod+F" = "window-toggle-maximize"             # Exit restores the previous layout size immediately
 "Mod+Shift+F" = "window-toggle-fullscreen"
 "Mod+R" = "window-cycle-primary-extent"
@@ -124,8 +124,8 @@
 # "Mod+Bracketleft" = "window-focus-previous"
 # "Mod+Shift+Bracketright" = "window-swap-next"
 # "Mod+Shift+Bracketleft" = "window-swap-previous"
-# "Mod+Minus" = "window-modify-primary-extent:-0.1"
-# "Mod+Equal" = "window-modify-primary-extent:0.1"
+"Mod+Minus" = "window-modify-primary-extent:-0.1"
+"Mod+Equal" = "window-modify-primary-extent:0.1"
 # "Mod+Alt+Minus" = "window-modify-secondary-extent:-0.1"
 # "Mod+Alt+Equal" = "window-modify-secondary-extent:0.1"
 # "Mod+Ctrl+H" = "window-modify-width-left:0.1"
@@ -134,11 +134,11 @@
 # "Mod+Ctrl+J" = "window-modify-height-down:0.1"
 # "Mod+Alt+R" = "window-cycle-secondary-extent"
 # "Mod+Alt+Shift+R" = "window-cycle-secondary-extent-back"
-# "Mod+Grave" = "window-focus-last"
+"Mod+Grave" = "window-focus-last"
 # "Mod+BackSpace" = "window-consume-or-expel-left"
-# "Mod+C" = "column-center"
-# "Mod+Shift+C" = "window-center"
-# "Mod+Ctrl+T" = "workspace-set-layout:toggle"
+"Mod+C" = "column-center"
+"Mod+Shift+C" = "window-center"
+"Mod+Ctrl+T" = "workspace-set-layout:toggle"
 # "Mod+MouseMiddle" = "layout-scroll-drag"
 # "Mod+Alt+K" = "keyboard-layout-next"
 # "Mod+WheelUp" = { action = "workspace-previous", cooldown_ms = 150 }
@@ -158,14 +158,12 @@
 # binds must not repeat. A table-form bind can run an action and then reset one
 # level, while a global reset provides an emergency exit from any layer.
 # Submaps: https://docs.noctalia.dev/umbriel/keybinds/#submaps
-# "Mod+S" = { action = "submap:resize", repeat = false }
-# "submap[resize],1" = { action = "window-set-primary-extent:0.5", submap = "reset" }
-# "submap[resize],N" = { action = "submap:nudge", repeat = false }
-# "submap[resize],Escape" = "submap:reset"
-# "submap[nudge],Left" = "window-modify-primary-extent:-0.1"
-# "submap[nudge],Right" = "window-modify-primary-extent:0.1"
-# "submap[nudge],Escape" = "submap:reset"
-# "Escape" = "submap:reset"
+"Mod+Shift+S" = { action = "submap:resize", repeat = false }
+"submap[resize],1" = { action = "window-set-primary-extent:0.5", submap = "reset" }
+"submap[resize],Escape" = "submap:reset"
+"submap[resize],Left" = "window-modify-primary-extent:-0.1"
+"submap[resize],Right" = "window-modify-primary-extent:0.1"
+"Escape" = "submap:reset"
 
 # Media and brightness
 # Documentation: https://docs.noctalia.dev/umbriel/keybinds/#example-media-and-brightness-keys

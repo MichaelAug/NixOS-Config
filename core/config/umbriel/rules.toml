@@ -148,9 +148,9 @@ default_pinned = true
 # blur = false
 
 # Fill the viewport for a workspace's lone tiled column.
-# [[window_rule]]
-# match.is_alone = true
-# default_maximize = true
+[[window_rule]]
+match.is_alone = true
+default_maximize = true
 
 # 75% width when the window is alone, the default width when another window opens.
 # [[window_rule]]
