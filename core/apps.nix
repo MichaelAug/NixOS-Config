@@ -22,7 +22,6 @@
         syncthingtray
 
         # Game dev
-        godotPackages_4_7.godot
         inkscape
         gimp
         krita

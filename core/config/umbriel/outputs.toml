@@ -51,7 +51,3 @@ mode = "1920x1080@60.000"
 position = [760, 1440]
 scale = 1
 transform = "normal"
-
-# New scrolling columns on the main output start at 1/3 width.
-[output."iiyama Corporation PL3486WQ 1251752300707".layout.scrolling]
-default_extent_fraction = 0.333333

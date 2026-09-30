@@ -89,9 +89,9 @@ default_fullscreen= true
 
 # Match a standardized surface content hint.
 
-[[window_rule]]
-match.content_type = "game"
-vrr = "always"
+# [[window_rule]]
+# match.content_type = "game"
+# vrr = "always"
 
 # Match a client-defined XDG toplevel tag, such as Proton-EM's game tag.
 
