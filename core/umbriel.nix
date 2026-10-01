@@ -36,10 +36,6 @@
   home-manager.users.${username} =
     { config, ... }:
     {
-      imports = [
-        inputs.noctalia.homeModules.default
-      ];
-
       programs.noctalia.enable = true;
 
       home = {

@@ -51,3 +51,11 @@ mode = "1920x1080@60.000"
 position = [760, 1440]
 scale = 1
 transform = "normal"
+
+[output."Dell Inc. DELL P2419H 3N5JGZ2"]
+enabled = true
+mode = "1920x1080@60.000"
+position = [-1200,-450]
+scale = 0.9
+transform = "90"
+workspace_axis = "horizontal"
