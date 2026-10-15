@@ -20,6 +20,7 @@
           withVencord = true;
         })
         syncthingtray
+        heroic
 
         # Game dev
         inkscape

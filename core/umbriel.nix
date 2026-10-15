@@ -7,10 +7,14 @@
 }:
 {
   imports = [
+    inputs.noctalia.nixosModules.default
     inputs.umbriel.nixosModules.default
     inputs.noctalia-greeter.nixosModules.default
   ];
-  programs.umbriel.enable = true;
+  programs = {
+    umbriel.enable = true;
+    noctalia.enable = true;
+  };
 
   services = {
     displayManager = {
@@ -36,8 +40,6 @@
   home-manager.users.${username} =
     { config, ... }:
     {
-      programs.noctalia.enable = true;
-
       home = {
         sessionVariables = {
           QT_QPA_PLATFORMTHEME = "qt6ct";

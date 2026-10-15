@@ -42,6 +42,11 @@ default_pinned = true
 match.app_id = "^steam_app_[0-9]+$"
 default_fullscreen= true
 
+# Fill the viewport for a workspace's lone tiled column.
+[[window_rule]]
+match.is_alone = true
+default_maximize = true
+
 # Optional positional placement recipe. Output names follow the same rules as
 # [output.*]. `default_output` scopes the workspace lookup to that output, and
 # integer workspace selectors are 1-based positions.
@@ -141,7 +146,7 @@ default_fullscreen= true
 
 # [[window_rule]]
 # match.is_focused = false
-# opacity = 0.85
+# opacity = 0.9
 
 # [[window_rule]]
 # match.is_focused = true
@@ -152,10 +157,6 @@ default_fullscreen= true
 # match.is_scratchpad = false
 # blur = false
 
-# Fill the viewport for a workspace's lone tiled column.
-[[window_rule]]
-match.is_alone = true
-default_maximize = true
 
 # 75% width when the window is alone, the default width when another window opens.
 # [[window_rule]]
