@@ -4,7 +4,7 @@
   services.desktopManager.gnome.enable = true;
 
   environment.systemPackages = with pkgs; [
-    errands
+    # errands
     evolution
     gnome-calendar
   ];

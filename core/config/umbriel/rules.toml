@@ -47,6 +47,18 @@ default_fullscreen= true
 match.is_alone = true
 default_maximize = true
 
+# Send steam big picture to sunshine output if exists
+[[window_rule]]
+match.app_id = "^steam$"
+match.title = "[Bb]ig [Pp]icture"
+default_output = "sunshine"
+default_fullscreen = true
+
+# Send steam games to sunshine output if exists
+[[window_rule]]
+match.app_id = "^steam_app_"
+default_output = "sunshine"
+
 # Optional positional placement recipe. Output names follow the same rules as
 # [output.*]. `default_output` scopes the workspace lookup to that output, and
 # integer workspace selectors are 1-based positions.
